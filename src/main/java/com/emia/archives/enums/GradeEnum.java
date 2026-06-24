@@ -1,0 +1,14 @@
+package com.emia.archives.enums;
+
+public enum GradeEnum {
+    LIEUTENANT,
+    CAPITAINE,
+    COMMANDANT,
+    LIEUTENANT_COLONEL,
+    COLONEL,
+    COLONEL_MAJOR,
+    GENERAL_DE_BRIGADE,
+    GENERAL_DE_DIVISION,
+    GENERAL_DE_CORPS_D_ARMEE,
+    GENERAL_D_ARMEE
+}
