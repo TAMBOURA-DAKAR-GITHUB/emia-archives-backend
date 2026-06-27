@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -71,7 +70,7 @@ public class StatisticsService {
     @Transactional(readOnly = true)
     public List<ChartDataPoint> getEffectifsEvolution(String schoolId) {
         List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
-        java.util.Collections.reverse(promotions);
+        promotions.sort((a, b) -> Integer.compare(toRangInt(b.getRang()), toRangInt(a.getRang())));
         return promotions.stream()
                 .map(p -> ChartDataPoint.builder()
                         .label(p.getRang())
@@ -84,7 +83,7 @@ public class StatisticsService {
     @Transactional(readOnly = true)
     public List<ChartDataPoint> getMoyennesEvolution(String schoolId) {
         List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
-        java.util.Collections.reverse(promotions);
+        promotions.sort((a, b) -> Integer.compare(toRangInt(b.getRang()), toRangInt(a.getRang())));
         return promotions.stream()
                 .map(p -> ChartDataPoint.builder()
                         .label(p.getRang())
@@ -172,5 +171,10 @@ public class StatisticsService {
             }
         }
         return null;
+    }
+
+    private int toRangInt(String rang) {
+        Matcher m = Pattern.compile("(\\d+)").matcher(rang);
+        return m.find() ? Integer.parseInt(m.group(1)) : 0;
     }
 }

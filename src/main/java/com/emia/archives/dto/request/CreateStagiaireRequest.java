@@ -33,4 +33,5 @@ public class CreateStagiaireRequest {
     private String observations;
     private String informationsSupplementaires;
     private Boolean estDecede;
+    private String photoUrl;
 }

@@ -85,7 +85,5 @@ public class DataInitializer implements CommandLineRunner {
                     .build();
         }
         admin.setPassword("1234");
-        userRepository.save(admin);
-        log.info("Admin user ready (admin / 1234)");
-    }
+        userRepository.save(admin);}
 }

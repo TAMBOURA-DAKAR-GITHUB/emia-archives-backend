@@ -42,4 +42,7 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
 
     @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion.rang = :rang ORDER BY s.rang ASC")
     List<Stagiaire> findBySchoolIdAndPromotionRangOrderByRangAsc(@Param("schoolId") String schoolId, @Param("rang") String rang);
+
+    @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND (LOWER(s.nomComplet) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(s.matricule) LIKE LOWER(CONCAT('%', :q, '%')))")
+    List<Stagiaire> searchBySchoolId(@Param("schoolId") String schoolId, @Param("q") String q);
 }

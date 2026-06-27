@@ -68,30 +68,33 @@ public class ExcelImportService {
 
                 try {
                     Double rangNumber = getCellNumericValue(row.getCell(0));
-                    String nom = getCellStringValue(row.getCell(1));
-                    Double anneeEntree = getCellNumericValue(row.getCell(2));
-                    Double anneeSortie = getCellNumericValue(row.getCell(3));
-
-                    if (rangNumber == null || nom == null || nom.isBlank() ||
-                            anneeEntree == null || anneeSortie == null) {
-                        errors.add("Ligne " + (i + 1) + " : données obligatoires manquantes (Rang, Nom, Années)");
+                    if (rangNumber == null) {
+                        errors.add("Ligne " + (i + 1) + " : rang manquant, ligne ignorée");
                         continue;
                     }
+
+                    String rangString = rangNumber.intValue() == 1
+                            ? "1ière Promotion"
+                            : rangNumber.intValue() + "ième Promotion";
+
+                    String nom = getCellStringValue(row.getCell(1));
+                    if (nom == null || nom.isBlank()) {
+                        nom = rangString;
+                    }
+
+                    Double anneeEntree = getCellNumericValue(row.getCell(2));
+                    Double anneeSortie = getCellNumericValue(row.getCell(3));
 
                     String cycleSpecialText = getCellStringValue(row.getCell(4));
                     boolean cycleSpecial = "OUI".equalsIgnoreCase(cycleSpecialText) ||
                             "TRUE".equalsIgnoreCase(cycleSpecialText) || "1".equals(cycleSpecialText);
                     String cycleSpecialInfo = getCellStringValue(row.getCell(5));
 
-                    String rangString = rangNumber.intValue() == 1
-                            ? "1ière Promotion"
-                            : rangNumber.intValue() + "ième Promotion";
-
                     PromotionDto dto = PromotionDto.builder()
                             .rang(rangString)
                             .nom(nom.trim())
-                            .anneeEntree(anneeEntree.intValue())
-                            .anneeSortie(anneeSortie.intValue())
+                            .anneeEntree(anneeEntree != null ? anneeEntree.intValue() : null)
+                            .anneeSortie(anneeSortie != null ? anneeSortie.intValue() : null)
                             .cycleSpecial(cycleSpecial)
                             .cycleSpecialInfo(cycleSpecialInfo != null ? cycleSpecialInfo.trim() : null)
                             .stagiaireCount(0)
@@ -139,6 +142,8 @@ public class ExcelImportService {
                     request.setInformationsSupplementaires(getCellStringValue(row.getCell(5)));
                     request.setObservations(getCellStringValue(row.getCell(6)));
                     request.setStatus(StagiaireStatus.EN_COURS.name());
+
+                    request.setRang(i); // auto-assigne le rang selon l'ordre dans le fichier
 
                     if (request.getNomComplet() != null && !request.getNomComplet().isBlank()) {
                         requests.add(request);

@@ -67,6 +67,7 @@ public class EntityMapper {
                 .observations(stagiaire.getObservations())
                 .informationsSupplementaires(stagiaire.getInformationsSupplementaires())
                 .estDecede(stagiaire.getEstDecede() != null && stagiaire.getEstDecede())
+                .photoUrl(stagiaire.getPhotoUrl())
                 .build();
     }
 

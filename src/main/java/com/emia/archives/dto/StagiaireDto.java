@@ -21,4 +21,5 @@ public class StagiaireDto {
     private String observations;
     private String informationsSupplementaires;
     private boolean estDecede;
+    private String photoUrl;
 }

@@ -19,8 +19,8 @@ public class MemberPromotionDetail {
     public static class PromotionDetail {
         private String rang;
         private String nom;
-        private int anneeEntree;
-        private int anneeSortie;
+        private Integer anneeEntree;
+        private Integer anneeSortie;
         private int stagiaireCount;
         private String majorName;
     }

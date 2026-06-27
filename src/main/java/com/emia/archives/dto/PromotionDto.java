@@ -10,8 +10,8 @@ public class PromotionDto {
     private Long id;
     private String rang;
     private String nom;
-    private int anneeEntree;
-    private int anneeSortie;
+    private Integer anneeEntree;
+    private Integer anneeSortie;
     private boolean cycleSpecial;
     private String cycleSpecialInfo;
     private int stagiaireCount;

@@ -4,9 +4,14 @@ import com.emia.archives.dto.StagiaireDto;
 import com.emia.archives.dto.request.CreateStagiaireRequest;
 import com.emia.archives.dto.response.ApiResponse;
 import com.emia.archives.service.ExcelImportService;
+import com.emia.archives.service.ExportService;
+import com.emia.archives.service.FileStorageService;
 import com.emia.archives.service.StagiaireService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,6 +25,8 @@ public class StagiaireController {
 
     private final StagiaireService stagiaireService;
     private final ExcelImportService excelImportService;
+    private final FileStorageService fileStorageService;
+    private final ExportService exportService;
 
     @GetMapping("/stagiaires")
     public ResponseEntity<ApiResponse<List<StagiaireDto>>> getAllStagiaires() {
@@ -62,5 +69,42 @@ public class StagiaireController {
             @PathVariable String schoolId, @RequestParam("file") MultipartFile file) throws Exception {
         List<StagiaireDto> result = excelImportService.importStagiaires(schoolId, file);
         return ResponseEntity.ok(ApiResponse.ok(result, result.size() + " stagiaires importés"));
+    }
+
+    @GetMapping("/schools/{schoolId}/promotions/{rang}/stagiaires/export/excel")
+    public ResponseEntity<byte[]> exportStagiairesExcel(
+            @PathVariable String schoolId, @PathVariable String rang) throws Exception {
+        byte[] data = exportService.exportStagiairesExcel(schoolId, rang);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=stagiaires-" + rang + ".xlsx")
+                .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                .body(data);
+    }
+
+    @PostMapping("/stagiaires/{id}/photo")
+    public ResponseEntity<ApiResponse<StagiaireDto>> uploadPhoto(
+            @PathVariable Long id, @RequestParam("file") MultipartFile file) {
+        StagiaireDto dto = stagiaireService.uploadPhoto(id, file);
+        return ResponseEntity.ok(ApiResponse.ok(dto, "Photo téléchargée avec succès"));
+    }
+
+    @GetMapping("/uploads/{filename:.+}")
+    public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
+        Resource resource = fileStorageService.loadFile(filename);
+        if (resource == null) {
+            return ResponseEntity.notFound().build();
+        }
+        String contentType = determineContentType(filename);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(contentType))
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline")
+                .body(resource);
+    }
+
+    private String determineContentType(String filename) {
+        if (filename.endsWith(".png")) return "image/png";
+        if (filename.endsWith(".webp")) return "image/webp";
+        if (filename.endsWith(".gif")) return "image/gif";
+        return "image/jpeg";
     }
 }

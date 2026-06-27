@@ -23,13 +23,13 @@ public class Promotion {
     @Column(nullable = false, length = 50)
     private String rang;
 
-    @Column(nullable = false)
+    @Column
     private String nom;
 
-    @Column(name = "annee_entree", nullable = false)
+    @Column(name = "annee_entree")
     private Integer anneeEntree;
 
-    @Column(name = "annee_sortie", nullable = false)
+    @Column(name = "annee_sortie")
     private Integer anneeSortie;
 
     @Column(name = "cycle_special")

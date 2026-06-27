@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
@@ -29,7 +30,9 @@ public class PromotionService {
     @Transactional(readOnly = true)
     public List<PromotionDto> getPromotionsBySchool(String schoolId) {
         schoolService.getSchoolEntityById(schoolId);
-        return promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId).stream()
+        List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
+        promotions.sort((a, b) -> Integer.compare(toRangInt(b.getRang()), toRangInt(a.getRang())));
+        return promotions.stream()
                 .map(mapper::toDto)
                 .toList();
     }
@@ -72,7 +75,9 @@ public class PromotionService {
 
     @Transactional(readOnly = true)
     public PromotionDto getActivePromotion(String schoolId) {
-        Promotion promotion = promotionRepository.findTopBySchoolIdOrderByAnneeEntreeDesc(schoolId)
+        List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
+        Promotion promotion = promotions.stream()
+                .max(Comparator.comparingInt(p -> toRangInt(p.getRang())))
                 .orElseThrow(() -> new ResourceNotFoundException("Aucune promotion trouvée pour l'école " + schoolId));
         return mapper.toDto(promotion);
     }
@@ -135,5 +140,10 @@ public class PromotionService {
         }
 
         promotionRepository.delete(promotion);
+    }
+
+    private int toRangInt(String rang) {
+        Matcher m = Pattern.compile("(\\d+)").matcher(rang);
+        return m.find() ? Integer.parseInt(m.group(1)) : 0;
     }
 }

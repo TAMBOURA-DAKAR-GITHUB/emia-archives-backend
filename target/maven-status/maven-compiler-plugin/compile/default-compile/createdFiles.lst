@@ -2,6 +2,7 @@ com\emia\archives\repository\SchoolRepository.class
 com\emia\archives\service\ExcelImportService.class
 com\emia\archives\controller\PromotionController.class
 com\emia\archives\dto\response\KpiData$KpiDataBuilder.class
+com\emia\archives\dto\response\SearchResultDto.class
 com\emia\archives\dto\PromotionDto$PromotionDtoBuilder.class
 com\emia\archives\entity\Personnel.class
 com\emia\archives\dto\UserDto$UserDtoBuilder.class
@@ -11,12 +12,14 @@ com\emia\archives\dto\response\ChartDataPoint$ChartDataPointBuilder.class
 com\emia\archives\dto\SchoolDto.class
 com\emia\archives\config\WebConfig.class
 com\emia\archives\enums\GradeEnum.class
+com\emia\archives\service\FileStorageService.class
 com\emia\archives\dto\response\MemberPromotionDetail$MemberPromotionDetailBuilder.class
 com\emia\archives\controller\ComEmiaController.class
 com\emia\archives\dto\response\ApiResponse$ApiResponseBuilder.class
 com\emia\archives\controller\AuthController.class
 com\emia\archives\dto\response\DonutSegment$DonutSegmentBuilder.class
 com\emia\archives\exception\BadRequestException.class
+com\emia\archives\service\ExportService.class
 com\emia\archives\dto\SchoolDto$SchoolDtoBuilder.class
 com\emia\archives\entity\School$SchoolBuilder.class
 com\emia\archives\entity\User.class
@@ -29,6 +32,7 @@ com\emia\archives\exception\GlobalExceptionHandler.class
 com\emia\archives\enums\StagiaireStatus.class
 com\emia\archives\service\GradeService.class
 com\emia\archives\dto\response\PodiumEntry.class
+com\emia\archives\dto\response\SearchResultDto$SearchResultDtoBuilder.class
 com\emia\archives\service\StagiaireService.class
 com\emia\archives\controller\StatisticsController.class
 com\emia\archives\dto\response\MemberPromotionDetail$PromotionDetail$PromotionDetailBuilder.class
@@ -36,6 +40,7 @@ com\emia\archives\dto\response\PodiumEntry$PodiumEntryBuilder.class
 com\emia\archives\entity\Personnel$PersonnelBuilder.class
 com\emia\archives\dto\response\MemberPromotionDetail.class
 com\emia\archives\enums\PersonnelCategorie.class
+com\emia\archives\controller\GlobalSearchController.class
 com\emia\archives\entity\Promotion.class
 com\emia\archives\controller\SchoolController.class
 com\emia\archives\controller\GradeController.class
@@ -76,6 +81,7 @@ com\emia\archives\entity\School.class
 com\emia\archives\dto\response\DashboardStats$DashboardStatsBuilder.class
 com\emia\archives\service\PromotionService.class
 com\emia\archives\dto\GradeDto$GradeDtoBuilder.class
+com\emia\archives\service\GlobalSearchService.class
 com\emia\archives\dto\response\ChartDataPoint.class
 com\emia\archives\enums\SchoolType.class
 com\emia\archives\dto\response\DashboardStats.class

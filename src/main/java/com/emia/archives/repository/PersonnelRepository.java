@@ -22,4 +22,9 @@ public interface PersonnelRepository extends JpaRepository<Personnel, Long> {
                                            @Param("categorie") PersonnelCategorie categorie,
                                            @Param("dateDebut") LocalDate dateDebut,
                                            @Param("dateFin") LocalDate dateFin);
+
+    @Query("SELECT p FROM Personnel p WHERE p.school.id = :schoolId AND p.categorie = :categorie AND LOWER(p.nomComplet) LIKE LOWER(CONCAT('%', :q, '%'))")
+    List<Personnel> searchBySchoolIdAndCategorie(@Param("schoolId") String schoolId,
+                                                  @Param("categorie") PersonnelCategorie categorie,
+                                                  @Param("q") String q);
 }

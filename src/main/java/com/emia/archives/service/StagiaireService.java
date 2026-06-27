@@ -16,6 +16,7 @@ import com.emia.archives.repository.StagiaireRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +29,7 @@ public class StagiaireService {
     private final PromotionService promotionService;
     private final SchoolService schoolService;
     private final EntityMapper mapper;
+    private final FileStorageService fileStorageService;
 
     @Transactional(readOnly = true)
     public List<StagiaireDto> getAllStagiaires() {
@@ -73,6 +75,7 @@ public class StagiaireService {
                 .observations(request.getObservations())
                 .informationsSupplementaires(request.getInformationsSupplementaires())
                 .estDecede(request.getEstDecede() != null && request.getEstDecede())
+                .photoUrl(request.getPhotoUrl())
                 .build();
 
         stagiaire = stagiaireRepository.save(stagiaire);
@@ -97,6 +100,7 @@ public class StagiaireService {
         stagiaire.setObservations(request.getObservations());
         stagiaire.setInformationsSupplementaires(request.getInformationsSupplementaires());
         stagiaire.setEstDecede(request.getEstDecede() != null && request.getEstDecede());
+        stagiaire.setPhotoUrl(request.getPhotoUrl() != null ? request.getPhotoUrl() : stagiaire.getPhotoUrl());
 
         if (request.getPromotion() != null && !request.getPromotion().equals(stagiaire.getPromotion().getRang())) {
             Promotion newPromotion = promotionService.getPromotionEntityBySchoolAndRangNumber(
@@ -113,9 +117,29 @@ public class StagiaireService {
     }
 
     @Transactional
+    public StagiaireDto uploadPhoto(Long id, MultipartFile file) {
+        Stagiaire stagiaire = stagiaireRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Stagiaire", "id", id));
+
+        String oldPhoto = stagiaire.getPhotoUrl();
+        String newFilename = fileStorageService.saveFile(id, file);
+        stagiaire.setPhotoUrl(newFilename);
+        stagiaire = stagiaireRepository.save(stagiaire);
+
+        if (oldPhoto != null) {
+            fileStorageService.deleteFile(oldPhoto);
+        }
+
+        return mapper.toDto(stagiaire);
+    }
+
+    @Transactional
     public void deleteStagiaire(Long id) {
         Stagiaire stagiaire = stagiaireRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Stagiaire", "id", id));
+        if (stagiaire.getPhotoUrl() != null) {
+            fileStorageService.deleteFile(stagiaire.getPhotoUrl());
+        }
         Promotion promotion = stagiaire.getPromotion();
         stagiaireRepository.delete(stagiaire);
         updatePromotionStats(promotion);
@@ -124,6 +148,10 @@ public class StagiaireService {
     private void updatePromotionStats(Promotion promotion) {
         long count = stagiaireRepository.countByPromotionId(promotion.getId());
         promotion.setStagiaireCount((int) count);
+
+        boolean hasSpecial = stagiaireRepository.findByPromotionIdOrderByRangAsc(promotion.getId())
+                .stream().anyMatch(s -> s.getCycleType() == CycleType.SPECIAL);
+        promotion.setCycleSpecial(hasSpecial);
 
         Optional<Stagiaire> major = stagiaireRepository.findTop5ByPromotionId(promotion.getId())
                 .stream().findFirst();

@@ -22,4 +22,7 @@ public interface PromotionRepository extends JpaRepository<Promotion, Long> {
     List<Promotion> findBySchoolIdAndAnneeOverlap(@Param("schoolId") String schoolId,
                                                    @Param("anneeDebut") Integer anneeDebut,
                                                    @Param("anneeFin") Integer anneeFin);
+
+    @Query("SELECT p FROM Promotion p WHERE p.school.id = :schoolId AND (LOWER(p.nom) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(p.rang) LIKE LOWER(CONCAT('%', :q, '%')))")
+    List<Promotion> searchBySchoolId(@Param("schoolId") String schoolId, @Param("q") String q);
 }

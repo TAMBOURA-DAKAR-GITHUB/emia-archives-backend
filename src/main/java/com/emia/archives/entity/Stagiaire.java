@@ -60,6 +60,9 @@ public class Stagiaire {
     @Column(name = "est_decede")
     private Boolean estDecede;
 
+    @Column(name = "photo_url", length = 500)
+    private String photoUrl;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
