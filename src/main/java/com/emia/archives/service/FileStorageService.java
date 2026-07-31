@@ -56,6 +56,28 @@ public class FileStorageService {
         }
     }
 
+    public String saveFileGeneric(String prefix, MultipartFile file) {
+        if (file.isEmpty()) {
+            throw new BadRequestException("Fichier vide");
+        }
+
+        String contentType = file.getContentType();
+        if (contentType == null || !contentType.startsWith("image/")) {
+            throw new BadRequestException("Seules les images sont acceptées (JPEG, PNG, WEBP)");
+        }
+
+        String extension = getExtension(file.getOriginalFilename());
+        String filename = prefix + "-" + UUID.randomUUID().toString().substring(0, 8) + extension;
+
+        try {
+            Path targetPath = uploadPath.resolve(filename);
+            Files.copy(file.getInputStream(), targetPath, StandardCopyOption.REPLACE_EXISTING);
+            return filename;
+        } catch (IOException e) {
+            throw new RuntimeException("Erreur lors de la sauvegarde du fichier", e);
+        }
+    }
+
     public void deleteFile(String filename) {
         if (filename == null || filename.isBlank()) return;
         try {

@@ -24,7 +24,6 @@ public class CreateStagiaireRequest {
     @DecimalMax(value = "20.0", message = "La moyenne ne peut pas dépasser 20")
     private BigDecimal moyenne;
 
-    @Min(value = 1, message = "Le rang doit être au moins 1")
     private Integer rang;
 
     private String grade;

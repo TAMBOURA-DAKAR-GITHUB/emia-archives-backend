@@ -47,6 +47,10 @@ public class EntityMapper {
                 .stagiaireCount(promotion.getStagiaireCount() != null ? promotion.getStagiaireCount() : 0)
                 .majorScore(promotion.getMajorScore() != null ? promotion.getMajorScore() : 0.0)
                 .majorName(promotion.getMajorName())
+                .emir(promotion.getEmir())
+                .chefTondjon(promotion.getChefTondjon())
+                .emirPhotoUrl(promotion.getEmirPhotoUrl())
+                .chefTondjonPhotoUrl(promotion.getChefTondjonPhotoUrl())
                 .schoolId(promotion.getSchool().getId())
                 .build();
     }

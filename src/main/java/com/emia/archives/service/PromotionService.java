@@ -101,6 +101,10 @@ public class PromotionService {
                 .stagiaireCount(0)
                 .majorName(dto.getMajorName())
                 .majorScore(dto.getMajorScore())
+                .emir(dto.getEmir())
+                .chefTondjon(dto.getChefTondjon())
+                .emirPhotoUrl(dto.getEmirPhotoUrl())
+                .chefTondjonPhotoUrl(dto.getChefTondjonPhotoUrl())
                 .build();
 
         promotion = promotionRepository.save(promotion);
@@ -124,6 +128,10 @@ public class PromotionService {
         promotion.setCycleSpecialInfo(dto.getCycleSpecialInfo());
         promotion.setMajorName(dto.getMajorName());
         promotion.setMajorScore(dto.getMajorScore());
+        promotion.setEmir(dto.getEmir());
+        promotion.setChefTondjon(dto.getChefTondjon());
+        promotion.setEmirPhotoUrl(dto.getEmirPhotoUrl() != null ? dto.getEmirPhotoUrl() : promotion.getEmirPhotoUrl());
+        promotion.setChefTondjonPhotoUrl(dto.getChefTondjonPhotoUrl() != null ? dto.getChefTondjonPhotoUrl() : promotion.getChefTondjonPhotoUrl());
 
         promotion = promotionRepository.save(promotion);
         return mapper.toDto(promotion);
@@ -145,5 +153,9 @@ public class PromotionService {
     private int toRangInt(String rang) {
         Matcher m = Pattern.compile("(\\d+)").matcher(rang);
         return m.find() ? Integer.parseInt(m.group(1)) : 0;
+    }
+
+    public Promotion save(Promotion promotion) {
+        return promotionRepository.save(promotion);
     }
 }

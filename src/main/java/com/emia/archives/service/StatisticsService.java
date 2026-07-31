@@ -26,7 +26,7 @@ public class StatisticsService {
     private final EntityMapper mapper;
 
     @Transactional(readOnly = true)
-    public List<KpiData> getKpis(String schoolId, String rang) {
+    public List<KpiData> getKpis(String schoolId, String rang, String nationality) {
         List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
         long totalPromotions = promotions.size();
 
@@ -35,12 +35,20 @@ public class StatisticsService {
         double bestScore;
         String trendText;
 
+        boolean hasNat = nationality != null && !nationality.isBlank();
+
         if (rang != null && !rang.isBlank()) {
             Promotion promotion = findPromotionByRangFlexible(schoolId, rang);
             if (promotion != null) {
-                totalStagiaires = stagiaireRepository.countByPromotionId(promotion.getId());
-                avgMoyenne = stagiaireRepository.averageMoyenneByPromotionId(promotion.getId()).doubleValue();
-                bestScore = stagiaireRepository.maxMoyenneByPromotionId(promotion.getId()).doubleValue();
+                totalStagiaires = hasNat
+                    ? stagiaireRepository.countByPromotionIdAndObservations(promotion.getId(), nationality)
+                    : stagiaireRepository.countByPromotionId(promotion.getId());
+                avgMoyenne = hasNat
+                    ? stagiaireRepository.averageMoyenneByPromotionIdAndObservations(promotion.getId(), nationality).doubleValue()
+                    : stagiaireRepository.averageMoyenneByPromotionId(promotion.getId()).doubleValue();
+                bestScore = hasNat
+                    ? stagiaireRepository.maxMoyenneByPromotionIdAndObservations(promotion.getId(), nationality).doubleValue()
+                    : stagiaireRepository.maxMoyenneByPromotionId(promotion.getId()).doubleValue();
                 trendText = "↑ " + (promotion.getNom() != null ? promotion.getNom() : "");
             } else {
                 totalStagiaires = 0;
@@ -49,9 +57,15 @@ public class StatisticsService {
                 trendText = "";
             }
         } else {
-            totalStagiaires = stagiaireRepository.countBySchoolId(schoolId);
-            avgMoyenne = stagiaireRepository.averageMoyenneBySchoolId(schoolId).doubleValue();
-            bestScore = stagiaireRepository.maxMoyenneBySchoolId(schoolId).doubleValue();
+            totalStagiaires = hasNat
+                ? stagiaireRepository.countBySchoolIdAndObservations(schoolId, nationality)
+                : stagiaireRepository.countBySchoolId(schoolId);
+            avgMoyenne = hasNat
+                ? stagiaireRepository.averageMoyenneBySchoolIdAndObservations(schoolId, nationality).doubleValue()
+                : stagiaireRepository.averageMoyenneBySchoolId(schoolId).doubleValue();
+            bestScore = hasNat
+                ? stagiaireRepository.maxMoyenneBySchoolIdAndObservations(schoolId, nationality).doubleValue()
+                : stagiaireRepository.maxMoyenneBySchoolId(schoolId).doubleValue();
             trendText = "↑ " + (!promotions.isEmpty() && promotions.get(0).getNom() != null ? promotions.get(0).getNom() : "");
         }
 
@@ -68,37 +82,57 @@ public class StatisticsService {
     }
 
     @Transactional(readOnly = true)
-    public List<ChartDataPoint> getEffectifsEvolution(String schoolId) {
+    public List<ChartDataPoint> getEffectifsEvolution(String schoolId, String nationality) {
         List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
         promotions.sort((a, b) -> Integer.compare(toRangInt(b.getRang()), toRangInt(a.getRang())));
+        boolean hasNat = nationality != null && !nationality.isBlank();
         return promotions.stream()
-                .map(p -> ChartDataPoint.builder()
+                .map(p -> {
+                    int count = hasNat
+                        ? (int) stagiaireRepository.countByPromotionIdAndObservations(p.getId(), nationality)
+                        : (p.getStagiaireCount() != null ? p.getStagiaireCount() : 0);
+                    return ChartDataPoint.builder()
                         .label(p.getRang())
-                        .value(p.getStagiaireCount() != null ? p.getStagiaireCount() : 0)
+                        .value(count)
                         .color("#2563eb")
-                        .build())
+                        .build();
+                })
                 .toList();
     }
 
     @Transactional(readOnly = true)
-    public List<ChartDataPoint> getMoyennesEvolution(String schoolId) {
+    public List<ChartDataPoint> getMoyennesEvolution(String schoolId, String nationality) {
         List<Promotion> promotions = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
         promotions.sort((a, b) -> Integer.compare(toRangInt(b.getRang()), toRangInt(a.getRang())));
+        boolean hasNat = nationality != null && !nationality.isBlank();
         return promotions.stream()
-                .map(p -> ChartDataPoint.builder()
+                .map(p -> {
+                    double avg = hasNat
+                        ? stagiaireRepository.averageMoyenneByPromotionIdAndObservations(p.getId(), nationality).doubleValue()
+                        : (p.getMajorScore() != null ? p.getMajorScore() : 0);
+                    return ChartDataPoint.builder()
                         .label(p.getRang())
-                        .value(p.getMajorScore() != null ? p.getMajorScore() : 0)
+                        .value(avg)
                         .color("#D4AF37")
-                        .build())
+                        .build();
+                })
                 .toList();
     }
 
     @Transactional(readOnly = true)
-    public List<DonutSegment> getGradeDistribution(String schoolId, String rang) {
+    public List<DonutSegment> getGradeDistribution(String schoolId, String rang, String nationality) {
         Promotion promotion = findPromotionByRangFlexible(schoolId, rang);
         if (promotion == null) return List.of();
 
         List<Stagiaire> stagiaires = stagiaireRepository.findByPromotionIdOrderByRangAsc(promotion.getId());
+
+        boolean hasNat = nationality != null && !nationality.isBlank();
+        if (hasNat) {
+            stagiaires = stagiaires.stream()
+                .filter(s -> nationality.equals(s.getObservations()))
+                .toList();
+        }
+
         long count = stagiaires.size();
         if (count == 0) return List.of();
 
@@ -133,11 +167,14 @@ public class StatisticsService {
     }
 
     @Transactional(readOnly = true)
-    public List<PodiumEntry> getTop5(String schoolId, String rang) {
+    public List<PodiumEntry> getTop5(String schoolId, String rang, String nationality) {
         Promotion promotion = findPromotionByRangFlexible(schoolId, rang);
         if (promotion == null) return List.of();
 
-        List<Stagiaire> top5 = stagiaireRepository.findTop5ByPromotionId(promotion.getId());
+        boolean hasNat = nationality != null && !nationality.isBlank();
+        List<Stagiaire> top5 = hasNat
+            ? stagiaireRepository.findTop5ByPromotionIdAndObservations(promotion.getId(), nationality)
+            : stagiaireRepository.findTop5ByPromotionId(promotion.getId());
         List<PodiumEntry> podium = new ArrayList<>();
         for (int i = 0; i < top5.size(); i++) {
             podium.add(mapper.toPodiumEntry(i + 1, top5.get(i)));
@@ -145,12 +182,42 @@ public class StatisticsService {
         return podium;
     }
 
+    @Transactional(readOnly = true)
+    public List<ChartDataPoint> getNationalityDistribution(String schoolId) {
+        List<Stagiaire> allStagiaires = stagiaireRepository.findBySchoolId(schoolId);
+
+        java.util.Map<String, Integer> countryCounts = new java.util.LinkedHashMap<>();
+        for (Stagiaire s : allStagiaires) {
+            String country = com.emia.archives.util.CountryResolver.resolve(s.getObservations());
+            if (country != null) {
+                countryCounts.merge(country, 1, Integer::sum);
+            }
+        }
+
+        String[] palette = {
+            "#2563eb", "#D4AF37", "#2E7D32", "#C62828", "#6A1B9A",
+            "#00838F", "#E65100", "#4E342E", "#37474F", "#827717"
+        };
+
+        List<java.util.Map.Entry<String, Integer>> sorted = new java.util.ArrayList<>(countryCounts.entrySet());
+        sorted.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+
+        List<ChartDataPoint> points = new ArrayList<>();
+        for (int i = 0; i < sorted.size(); i++) {
+            java.util.Map.Entry<String, Integer> entry = sorted.get(i);
+            points.add(ChartDataPoint.builder()
+                    .label(entry.getKey())
+                    .value(entry.getValue())
+                    .color(palette[i % palette.length])
+                    .build());
+        }
+        return points;
+    }
+
     private Promotion findPromotionByRangFlexible(String schoolId, String rang) {
-        // First try exact match
         Optional<Promotion> exact = promotionRepository.findFirstBySchoolIdAndRang(schoolId, rang);
         if (exact.isPresent()) return exact.get();
 
-        // Then try matching by the numeric part
         Matcher matcher = Pattern.compile("(\\d+)").matcher(rang);
         if (matcher.find()) {
             String num = matcher.group(1);
@@ -158,7 +225,6 @@ public class StatisticsService {
             if (byNum.isPresent()) return byNum.get();
         }
 
-        // Fallback: iterate all promotions and find one whose rang contains the same numeric value
         List<Promotion> all = promotionRepository.findBySchoolIdOrderByAnneeEntreeDesc(schoolId);
         Matcher inputMatcher = Pattern.compile("(\\d+)").matcher(rang);
         if (inputMatcher.find()) {

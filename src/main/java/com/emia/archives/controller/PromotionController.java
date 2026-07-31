@@ -8,6 +8,7 @@ import com.emia.archives.exception.ResourceNotFoundException;
 import com.emia.archives.mapper.EntityMapper;
 import com.emia.archives.repository.StagiaireRepository;
 import com.emia.archives.service.ExcelImportService;
+import com.emia.archives.service.FileStorageService;
 import com.emia.archives.service.PromotionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,6 +28,7 @@ public class PromotionController {
 
     private final PromotionService promotionService;
     private final ExcelImportService excelImportService;
+    private final FileStorageService fileStorageService;
     private final StagiaireRepository stagiaireRepository;
     private final EntityMapper mapper;
 
@@ -86,5 +88,33 @@ public class PromotionController {
                                                               @PathVariable String rang) {
         promotionService.deletePromotion(schoolId, rang);
         return ResponseEntity.ok(ApiResponse.ok(null, "Promotion supprimée avec succès"));
+    }
+
+    @PostMapping("/{rang}/photo/{role}")
+    public ResponseEntity<ApiResponse<PromotionDto>> uploadLeaderPhoto(
+            @PathVariable String schoolId,
+            @PathVariable String rang,
+            @PathVariable String role,
+            @RequestParam("file") MultipartFile file) {
+        Promotion promotion = promotionService.getPromotionEntityBySchoolAndRangNumber(schoolId, rang);
+
+        String prefix = "promo-" + rang.replaceAll("\\s+", "-") + "-" + role;
+        String filename = fileStorageService.saveFileGeneric(prefix, file);
+
+        String oldPhoto = "emir".equals(role) ? promotion.getEmirPhotoUrl() : promotion.getChefTondjonPhotoUrl();
+
+        if ("emir".equals(role)) {
+            promotion.setEmirPhotoUrl(filename);
+        } else if ("chef".equals(role)) {
+            promotion.setChefTondjonPhotoUrl(filename);
+        }
+
+        promotion = promotionService.save(promotion);
+
+        if (oldPhoto != null) {
+            fileStorageService.deleteFile(oldPhoto);
+        }
+
+        return ResponseEntity.ok(ApiResponse.ok(mapper.toDto(promotion), "Photo téléchargée avec succès"));
     }
 }

@@ -17,5 +17,9 @@ public class PromotionDto {
     private int stagiaireCount;
     private double majorScore;
     private String majorName;
+    private String emir;
+    private String chefTondjon;
+    private String emirPhotoUrl;
+    private String chefTondjonPhotoUrl;
     private String schoolId;
 }

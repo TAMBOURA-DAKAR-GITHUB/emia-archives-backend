@@ -68,7 +68,7 @@ public class StagiaireService {
                 .promotion(promotion)
                 .school(school)
                 .moyenne(request.getMoyenne())
-                .rang(request.getRang())
+                .rang(null)
                 .grade(request.getGrade() != null ? GradeEnum.valueOf(request.getGrade()) : null)
                 .cycleType(request.getCycleType() != null ? CycleType.valueOf(request.getCycleType()) : null)
                 .status(request.getStatus() != null ? StagiaireStatus.valueOf(request.getStatus()) : StagiaireStatus.EN_COURS)
@@ -79,6 +79,7 @@ public class StagiaireService {
                 .build();
 
         stagiaire = stagiaireRepository.save(stagiaire);
+        recalculateRangs(promotion.getId());
         updatePromotionStats(promotion);
         return mapper.toDto(stagiaire);
     }
@@ -93,7 +94,7 @@ public class StagiaireService {
         stagiaire.setNomComplet(request.getNomComplet());
         stagiaire.setMatricule(request.getMatricule());
         stagiaire.setMoyenne(request.getMoyenne());
-        stagiaire.setRang(request.getRang());
+        stagiaire.setRang(null);
         stagiaire.setGrade(request.getGrade() != null ? GradeEnum.valueOf(request.getGrade()) : null);
         stagiaire.setCycleType(request.getCycleType() != null ? CycleType.valueOf(request.getCycleType()) : null);
         stagiaire.setStatus(request.getStatus() != null ? StagiaireStatus.valueOf(request.getStatus()) : StagiaireStatus.EN_COURS);
@@ -109,6 +110,10 @@ public class StagiaireService {
         }
 
         stagiaire = stagiaireRepository.save(stagiaire);
+        recalculateRangs(oldPromotion.getId());
+        if (!oldPromotion.getId().equals(stagiaire.getPromotion().getId())) {
+            recalculateRangs(stagiaire.getPromotion().getId());
+        }
         updatePromotionStats(oldPromotion);
         if (!oldPromotion.getId().equals(stagiaire.getPromotion().getId())) {
             updatePromotionStats(stagiaire.getPromotion());
@@ -141,7 +146,9 @@ public class StagiaireService {
             fileStorageService.deleteFile(stagiaire.getPhotoUrl());
         }
         Promotion promotion = stagiaire.getPromotion();
+        Long promotionId = promotion.getId();
         stagiaireRepository.delete(stagiaire);
+        recalculateRangs(promotionId);
         updatePromotionStats(promotion);
     }
 
@@ -164,5 +171,27 @@ public class StagiaireService {
 
     public List<Stagiaire> getTop5ByPromotion(Long promotionId) {
         return stagiaireRepository.findTop5ByPromotionId(promotionId);
+    }
+
+    @Transactional
+    public void recalculateRangs(Long promotionId) {
+        List<Stagiaire> stagiaires = stagiaireRepository.findAllByPromotionIdOrderByMoyenneDesc(promotionId);
+
+        int currentRank = 0;
+        BigDecimal prevMoyenne = null;
+
+        for (int i = 0; i < stagiaires.size(); i++) {
+            Stagiaire s = stagiaires.get(i);
+            if (s.getMoyenne() == null) {
+                s.setRang(null);
+            } else if (prevMoyenne != null && s.getMoyenne().compareTo(prevMoyenne) == 0) {
+                s.setRang(currentRank);
+            } else {
+                currentRank = i + 1;
+                s.setRang(currentRank);
+            }
+            prevMoyenne = s.getMoyenne();
+        }
+        stagiaireRepository.saveAll(stagiaires);
     }
 }

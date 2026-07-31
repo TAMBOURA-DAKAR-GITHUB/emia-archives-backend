@@ -143,8 +143,6 @@ public class ExcelImportService {
                     request.setObservations(getCellStringValue(row.getCell(6)));
                     request.setStatus(StagiaireStatus.EN_COURS.name());
 
-                    request.setRang(i); // auto-assigne le rang selon l'ordre dans le fichier
-
                     if (request.getNomComplet() != null && !request.getNomComplet().isBlank()) {
                         requests.add(request);
                     }

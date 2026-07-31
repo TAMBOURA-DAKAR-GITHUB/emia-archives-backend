@@ -25,6 +25,7 @@ com\emia\archives\controller\GradeController.class
 com\emia\archives\dto\StagiaireDto$StagiaireDtoBuilder.class
 com\emia\archives\entity\User$UserBuilder.class
 com\emia\archives\dto\StagiaireDto.class
+com\emia\archives\util\CountryResolver.class
 com\emia\archives\repository\UserRepository.class
 com\emia\archives\dto\PersonnelDto.class
 com\emia\archives\dto\GradeDto.class

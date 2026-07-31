@@ -45,4 +45,35 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
 
     @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND (LOWER(s.nomComplet) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(s.matricule) LIKE LOWER(CONCAT('%', :q, '%')))")
     List<Stagiaire> searchBySchoolId(@Param("schoolId") String schoolId, @Param("q") String q);
+
+    @Query("SELECT s FROM Stagiaire s WHERE s.promotion.id = :promotionId ORDER BY CASE WHEN s.moyenne IS NULL THEN 1 ELSE 0 END, s.moyenne DESC")
+    List<Stagiaire> findAllByPromotionIdOrderByMoyenneDesc(@Param("promotionId") Long promotionId);
+
+    long countBySchoolIdAndObservations(String schoolId, String observations);
+
+    long countByPromotionIdAndObservations(Long promotionId, String observations);
+
+    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations")
+    BigDecimal averageMoyenneBySchoolIdAndObservations(@Param("schoolId") String schoolId, @Param("observations") String observations);
+
+    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations")
+    BigDecimal maxMoyenneBySchoolIdAndObservations(@Param("schoolId") String schoolId, @Param("observations") String observations);
+
+    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.promotion.id = :promotionId AND s.observations = :observations")
+    BigDecimal averageMoyenneByPromotionIdAndObservations(@Param("promotionId") Long promotionId, @Param("observations") String observations);
+
+    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.promotion.id = :promotionId AND s.observations = :observations")
+    BigDecimal maxMoyenneByPromotionIdAndObservations(@Param("promotionId") Long promotionId, @Param("observations") String observations);
+
+    @Query("SELECT s FROM Stagiaire s WHERE s.promotion.id = :promotionId AND s.observations = :observations ORDER BY CASE WHEN s.moyenne IS NULL THEN 1 ELSE 0 END, s.moyenne DESC LIMIT 5")
+    List<Stagiaire> findTop5ByPromotionIdAndObservations(@Param("promotionId") Long promotionId, @Param("observations") String observations);
+
+    @Query(value = "SELECT s.observations AS nationality, COUNT(*) AS cnt FROM stagiaires s WHERE s.school_id = :schoolId AND s.observations IS NOT NULL AND s.observations != '' GROUP BY s.observations ORDER BY cnt DESC", nativeQuery = true)
+    List<Object[]> countByNationality(@Param("schoolId") String schoolId);
+
+    @Query(value = "SELECT s.observations AS nationality, COUNT(*) AS cnt FROM stagiaires s WHERE s.school_id = :schoolId AND s.promotion_id = :promotionId AND s.observations IS NOT NULL AND s.observations != '' GROUP BY s.observations ORDER BY cnt DESC", nativeQuery = true)
+    List<Object[]> countByNationalityAndPromotionId(@Param("schoolId") String schoolId, @Param("promotionId") Long promotionId);
+
+    @Query("SELECT DISTINCT s.observations FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations IS NOT NULL AND s.observations != ''")
+    List<String> findDistinctObservationsBySchoolId(@Param("schoolId") String schoolId);
 }

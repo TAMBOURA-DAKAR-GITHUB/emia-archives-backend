@@ -37,6 +37,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\StagiaireDto.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\exception\GlobalExceptionHandler.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\SchoolService.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\util\CountryResolver.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\DashboardStats.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\SchoolRepository.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\exception\ResourceNotFoundException.java

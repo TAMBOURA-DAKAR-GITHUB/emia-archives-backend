@@ -47,6 +47,18 @@ public class Promotion {
     @Column(name = "major_name")
     private String majorName;
 
+    @Column(length = 100)
+    private String emir;
+
+    @Column(name = "chef_tondjon", length = 100)
+    private String chefTondjon;
+
+    @Column(name = "emir_photo_url")
+    private String emirPhotoUrl;
+
+    @Column(name = "chef_tondjon_photo_url")
+    private String chefTondjonPhotoUrl;
+
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
 
