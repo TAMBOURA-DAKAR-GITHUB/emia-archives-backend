@@ -53,10 +53,25 @@ public class StagiaireService {
         return mapper.toDto(stagiaire);
     }
 
+    @Transactional(readOnly = true)
+    public List<StagiaireDto> getStagiairesWithoutPromotion(String schoolId) {
+        schoolService.getSchoolEntityById(schoolId);
+        return stagiaireRepository.findBySchoolIdAndPromotionIsNull(schoolId).stream()
+                .map(mapper::toDto)
+                .toList();
+    }
+
     @Transactional
     public StagiaireDto createStagiaire(String schoolId, CreateStagiaireRequest request) {
         School school = schoolService.getSchoolEntityById(schoolId);
-        Promotion promotion = promotionService.getPromotionEntityBySchoolAndRangNumber(schoolId, request.getPromotion());
+
+        Promotion promotion = null;
+        if (!isCycleStagiaire(request.getCycleType())) {
+            if (request.getPromotion() == null || request.getPromotion().isBlank()) {
+                throw new BadRequestException("La promotion est requise");
+            }
+            promotion = promotionService.getPromotionEntityBySchoolAndRangNumber(schoolId, request.getPromotion());
+        }
 
         if (request.getMatricule() != null && stagiaireRepository.findByMatricule(request.getMatricule()).isPresent()) {
             throw new BadRequestException("Un stagiaire avec le matricule " + request.getMatricule() + " existe déjà");
@@ -65,9 +80,12 @@ public class StagiaireService {
         Stagiaire stagiaire = Stagiaire.builder()
                 .nomComplet(request.getNomComplet())
                 .matricule(request.getMatricule())
+                .numeroEoa(nextNumeroEoa())
                 .promotion(promotion)
                 .school(school)
                 .moyenne(request.getMoyenne())
+                .dateNaissance(request.getDateNaissance())
+                .lieuNaissance(request.getLieuNaissance())
                 .rang(null)
                 .grade(request.getGrade() != null ? GradeEnum.valueOf(request.getGrade()) : null)
                 .cycleType(request.getCycleType() != null ? CycleType.valueOf(request.getCycleType()) : null)
@@ -79,8 +97,10 @@ public class StagiaireService {
                 .build();
 
         stagiaire = stagiaireRepository.save(stagiaire);
-        recalculateRangs(promotion.getId());
-        updatePromotionStats(promotion);
+        if (promotion != null) {
+            recalculateRangs(promotion.getId());
+            updatePromotionStats(promotion);
+        }
         return mapper.toDto(stagiaire);
     }
 
@@ -94,6 +114,8 @@ public class StagiaireService {
         stagiaire.setNomComplet(request.getNomComplet());
         stagiaire.setMatricule(request.getMatricule());
         stagiaire.setMoyenne(request.getMoyenne());
+        stagiaire.setDateNaissance(request.getDateNaissance());
+        stagiaire.setLieuNaissance(request.getLieuNaissance());
         stagiaire.setRang(null);
         stagiaire.setGrade(request.getGrade() != null ? GradeEnum.valueOf(request.getGrade()) : null);
         stagiaire.setCycleType(request.getCycleType() != null ? CycleType.valueOf(request.getCycleType()) : null);
@@ -103,22 +125,40 @@ public class StagiaireService {
         stagiaire.setEstDecede(request.getEstDecede() != null && request.getEstDecede());
         stagiaire.setPhotoUrl(request.getPhotoUrl() != null ? request.getPhotoUrl() : stagiaire.getPhotoUrl());
 
-        if (request.getPromotion() != null && !request.getPromotion().equals(stagiaire.getPromotion().getRang())) {
+        if (isCycleStagiaire(request.getCycleType())) {
+            stagiaire.setPromotion(null);
+        } else {
+            if (request.getPromotion() == null || request.getPromotion().isBlank()) {
+                throw new BadRequestException("La promotion est requise");
+            }
             Promotion newPromotion = promotionService.getPromotionEntityBySchoolAndRangNumber(
                     request.getSchoolId(), request.getPromotion());
-            stagiaire.setPromotion(newPromotion);
+            if (oldPromotion == null || !oldPromotion.getId().equals(newPromotion.getId())) {
+                stagiaire.setPromotion(newPromotion);
+            }
         }
 
         stagiaire = stagiaireRepository.save(stagiaire);
-        recalculateRangs(oldPromotion.getId());
-        if (!oldPromotion.getId().equals(stagiaire.getPromotion().getId())) {
-            recalculateRangs(stagiaire.getPromotion().getId());
+        if (oldPromotion != null) {
+            recalculateRangs(oldPromotion.getId());
+            updatePromotionStats(oldPromotion);
         }
-        updatePromotionStats(oldPromotion);
-        if (!oldPromotion.getId().equals(stagiaire.getPromotion().getId())) {
-            updatePromotionStats(stagiaire.getPromotion());
+        Promotion newPromotion = stagiaire.getPromotion();
+        if (newPromotion != null && (oldPromotion == null || !oldPromotion.getId().equals(newPromotion.getId()))) {
+            recalculateRangs(newPromotion.getId());
+            updatePromotionStats(newPromotion);
         }
         return mapper.toDto(stagiaire);
+    }
+
+    private boolean isCycleStagiaire(String cycleType) {
+        if (cycleType == null) return false;
+        try {
+            return CycleType.READAPTATION == CycleType.valueOf(cycleType)
+                    || CycleType.ADAPTATION == CycleType.valueOf(cycleType);
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
     }
 
     @Transactional
@@ -146,10 +186,15 @@ public class StagiaireService {
             fileStorageService.deleteFile(stagiaire.getPhotoUrl());
         }
         Promotion promotion = stagiaire.getPromotion();
-        Long promotionId = promotion.getId();
         stagiaireRepository.delete(stagiaire);
-        recalculateRangs(promotionId);
-        updatePromotionStats(promotion);
+        if (promotion != null) {
+            recalculateRangs(promotion.getId());
+            updatePromotionStats(promotion);
+        }
+    }
+
+    private int nextNumeroEoa() {
+        return stagiaireRepository.findMaxNumeroEoa() + 1;
     }
 
     private void updatePromotionStats(Promotion promotion) {

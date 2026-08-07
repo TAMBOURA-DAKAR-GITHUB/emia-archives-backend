@@ -15,5 +15,6 @@ public class PersonnelDto {
     private LocalDate dateFinService;
     private String grade;
     private String categorie;
+    private String matiereEnseignee;
     private String schoolId;
 }

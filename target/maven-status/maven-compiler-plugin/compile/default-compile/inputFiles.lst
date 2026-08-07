@@ -15,6 +15,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\request\CreatePersonnelRequest.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\StagiaireRepository.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\DeController.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\IpController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\request\LoginRequest.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\GlobalSearchService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\PromotionRepository.java
@@ -25,6 +26,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\en
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\ArchivesApplication.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\entity\User.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\ExcelImportService.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\CycleStatsResponse.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\GlobalSearchController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\PersonnelDto.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\entity\Promotion.java
@@ -33,6 +35,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\StagiaireService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\PromotionController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\AuthService.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\DiplomaService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\config\SpaController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\StagiaireDto.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\exception\GlobalExceptionHandler.java
@@ -49,6 +52,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\PersonnelRepository.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\ChartDataPoint.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\entity\Stagiaire.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\DiplomaController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\request\CreateStagiaireRequest.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\LoginResponse.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\PromotionDto.java

@@ -1,6 +1,7 @@
 package com.emia.archives.repository;
 
 import com.emia.archives.entity.Stagiaire;
+import com.emia.archives.enums.CycleType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,18 +15,30 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
 
     List<Stagiaire> findBySchoolId(String schoolId);
 
+    List<Stagiaire> findBySchoolIdAndPromotionIsNull(String schoolId);
+
+    List<Stagiaire> findBySchoolIdAndPromotionIsNotNull(String schoolId);
+
+    List<Stagiaire> findBySchoolIdAndCycleType(String schoolId, CycleType cycleType);
+
     List<Stagiaire> findByPromotionSchoolIdAndPromotionRangOrderByRangAsc(String schoolId, String rang);
 
     Optional<Stagiaire> findByMatricule(String matricule);
 
-    long countBySchoolId(String schoolId);
+    @Query("SELECT COALESCE(MAX(s.numeroEoa), 0) FROM Stagiaire s")
+    Integer findMaxNumeroEoa();
+
+    List<Stagiaire> findAllByOrderByIdAsc();
+
+    @Query("SELECT COUNT(s) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion IS NOT NULL")
+    long countBySchoolId(@Param("schoolId") String schoolId);
 
     long countByPromotionId(Long promotionId);
 
-    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId")
+    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion IS NOT NULL")
     BigDecimal averageMoyenneBySchoolId(@Param("schoolId") String schoolId);
 
-    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId")
+    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion IS NOT NULL")
     BigDecimal maxMoyenneBySchoolId(@Param("schoolId") String schoolId);
 
     @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.promotion.id = :promotionId")
@@ -40,7 +53,7 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
     @Query("SELECT COUNT(s) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.status = 'ABANDONNE'")
     long countAbandonnesBySchoolId(@Param("schoolId") String schoolId);
 
-    @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion.rang = :rang ORDER BY s.rang ASC")
+    @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion.rang = :rang ORDER BY CASE WHEN s.rang IS NULL THEN 1 ELSE 0 END, s.rang ASC")
     List<Stagiaire> findBySchoolIdAndPromotionRangOrderByRangAsc(@Param("schoolId") String schoolId, @Param("rang") String rang);
 
     @Query("SELECT s FROM Stagiaire s WHERE s.school.id = :schoolId AND (LOWER(s.nomComplet) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(s.matricule) LIKE LOWER(CONCAT('%', :q, '%')))")
@@ -49,14 +62,15 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
     @Query("SELECT s FROM Stagiaire s WHERE s.promotion.id = :promotionId ORDER BY CASE WHEN s.moyenne IS NULL THEN 1 ELSE 0 END, s.moyenne DESC")
     List<Stagiaire> findAllByPromotionIdOrderByMoyenneDesc(@Param("promotionId") Long promotionId);
 
-    long countBySchoolIdAndObservations(String schoolId, String observations);
+    @Query("SELECT COUNT(s) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations AND s.promotion IS NOT NULL")
+    long countBySchoolIdAndObservations(@Param("schoolId") String schoolId, @Param("observations") String observations);
 
     long countByPromotionIdAndObservations(Long promotionId, String observations);
 
-    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations")
+    @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations AND s.promotion IS NOT NULL")
     BigDecimal averageMoyenneBySchoolIdAndObservations(@Param("schoolId") String schoolId, @Param("observations") String observations);
 
-    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations")
+    @Query("SELECT COALESCE(MAX(s.moyenne), 0) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.observations = :observations AND s.promotion IS NOT NULL")
     BigDecimal maxMoyenneBySchoolIdAndObservations(@Param("schoolId") String schoolId, @Param("observations") String observations);
 
     @Query("SELECT COALESCE(AVG(s.moyenne), 0) FROM Stagiaire s WHERE s.promotion.id = :promotionId AND s.observations = :observations")

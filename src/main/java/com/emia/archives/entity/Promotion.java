@@ -2,6 +2,7 @@ package com.emia.archives.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -27,10 +28,10 @@ public class Promotion {
     private String nom;
 
     @Column(name = "annee_entree")
-    private Integer anneeEntree;
+    private LocalDate anneeEntree;
 
     @Column(name = "annee_sortie")
-    private Integer anneeSortie;
+    private LocalDate anneeSortie;
 
     @Column(name = "cycle_special")
     private Boolean cycleSpecial;

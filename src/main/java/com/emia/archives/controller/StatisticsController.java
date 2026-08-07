@@ -53,6 +53,11 @@ public class StatisticsController {
         return ResponseEntity.ok(ApiResponse.ok(statisticsService.getTop5(schoolId, rang, nationality)));
     }
 
+    @GetMapping("/cycles")
+    public ResponseEntity<ApiResponse<CycleStatsResponse>> getCycleStats(@PathVariable String schoolId) {
+        return ResponseEntity.ok(ApiResponse.ok(statisticsService.getCycleStats(schoolId)));
+    }
+
     @GetMapping("/nationalities")
     public ResponseEntity<ApiResponse<List<ChartDataPoint>>> getNationalities(
             @PathVariable String schoolId) {

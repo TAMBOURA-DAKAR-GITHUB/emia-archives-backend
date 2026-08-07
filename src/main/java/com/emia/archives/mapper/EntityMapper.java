@@ -61,9 +61,12 @@ public class EntityMapper {
                 .id(stagiaire.getId())
                 .nomComplet(stagiaire.getNomComplet())
                 .matricule(stagiaire.getMatricule())
-                .promotion(stagiaire.getPromotion().getRang())
+                .numeroEoa(stagiaire.getNumeroEoa())
+                .promotion(stagiaire.getPromotion() != null ? stagiaire.getPromotion().getRang() : null)
                 .schoolId(stagiaire.getSchool().getId())
                 .moyenne(stagiaire.getMoyenne())
+                .dateNaissance(stagiaire.getDateNaissance())
+                .lieuNaissance(stagiaire.getLieuNaissance())
                 .rang(stagiaire.getRang())
                 .grade(stagiaire.getGrade() != null ? stagiaire.getGrade().name() : null)
                 .cycleType(stagiaire.getCycleType() != null ? stagiaire.getCycleType().name() : null)
@@ -115,6 +118,7 @@ public class EntityMapper {
                 .dateFinService(personnel.getDateFinService())
                 .grade(personnel.getGrade() != null ? personnel.getGrade().name() : null)
                 .categorie(personnel.getCategorie().name())
+                .matiereEnseignee(personnel.getMatiereEnseignee())
                 .schoolId(personnel.getSchool().getId())
                 .build();
     }
@@ -125,6 +129,7 @@ public class EntityMapper {
                 .dateDebutService(request.getDateDebutService())
                 .dateFinService(request.getDateFinService())
                 .categorie(categorie)
+                .matiereEnseignee(request.getMatiereEnseignee())
                 .school(school);
 
         if (request.getGrade() != null) {

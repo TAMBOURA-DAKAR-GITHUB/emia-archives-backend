@@ -6,6 +6,7 @@ import com.emia.archives.enums.StagiaireStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -25,8 +26,11 @@ public class Stagiaire {
     @Column(length = 50, unique = true)
     private String matricule;
 
+    @Column(name = "numero_eoa")
+    private Integer numeroEoa;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "promotion_id", nullable = false)
+    @JoinColumn(name = "promotion_id", nullable = true)
     private Promotion promotion;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -35,6 +39,12 @@ public class Stagiaire {
 
     @Column(precision = 4, scale = 2)
     private BigDecimal moyenne;
+
+    @Column(name = "date_naissance")
+    private LocalDate dateNaissance;
+
+    @Column(name = "lieu_naissance", length = 200)
+    private String lieuNaissance;
 
     @Column
     private Integer rang;

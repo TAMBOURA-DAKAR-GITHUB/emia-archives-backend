@@ -36,6 +36,9 @@ public class Personnel {
     @Column(name = "categorie", nullable = false, length = 20)
     private PersonnelCategorie categorie;
 
+    @Column(name = "matiere_enseignee")
+    private String matiereEnseignee;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "school_id", nullable = false)
     private School school;

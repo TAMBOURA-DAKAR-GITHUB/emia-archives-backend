@@ -2,6 +2,8 @@ package com.emia.archives.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
+
 @Getter @Setter
 @NoArgsConstructor @AllArgsConstructor
 @Builder
@@ -10,8 +12,8 @@ public class PromotionDto {
     private Long id;
     private String rang;
     private String nom;
-    private Integer anneeEntree;
-    private Integer anneeSortie;
+    private LocalDate anneeEntree;
+    private LocalDate anneeSortie;
     private boolean cycleSpecial;
     private String cycleSpecialInfo;
     private int stagiaireCount;

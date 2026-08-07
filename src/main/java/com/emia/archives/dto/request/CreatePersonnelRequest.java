@@ -12,6 +12,7 @@ public class CreatePersonnelRequest {
     private LocalDate dateDebutService;
     private LocalDate dateFinService;
     private String grade;
+    private String matiereEnseignee;
     private String categorie;
     private String schoolId;
 }

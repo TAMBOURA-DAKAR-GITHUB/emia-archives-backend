@@ -4,12 +4,14 @@ import com.emia.archives.dto.response.SearchResultDto;
 import com.emia.archives.entity.Personnel;
 import com.emia.archives.entity.Promotion;
 import com.emia.archives.entity.Stagiaire;
+import com.emia.archives.enums.CycleType;
 import com.emia.archives.enums.PersonnelCategorie;
 import com.emia.archives.repository.PersonnelRepository;
 import com.emia.archives.repository.PromotionRepository;
 import com.emia.archives.repository.StagiaireRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,7 @@ public class GlobalSearchService {
     private final PromotionRepository promotionRepository;
     private final PersonnelRepository personnelRepository;
 
+    @Transactional(readOnly = true)
     public List<SearchResultDto> search(String schoolId, String q) {
         List<SearchResultDto> results = new ArrayList<>();
 
@@ -35,7 +38,9 @@ public class GlobalSearchService {
                     .type("STAGIAIRE")
                     .id(String.valueOf(s.getId()))
                     .label(s.getNomComplet())
-                    .subtitle("Promotion " + s.getPromotion().getRang())
+                    .subtitle(s.getPromotion() != null
+                            ? "Promotion " + s.getPromotion().getRang()
+                            : cycleLabel(s.getCycleType()))
                     .build());
         }
 
@@ -72,6 +77,26 @@ public class GlobalSearchService {
                     .build());
         }
 
+        // Search IP
+        List<Personnel> ip = personnelRepository.searchBySchoolIdAndCategorie(schoolId, PersonnelCategorie.IP, query);
+        for (Personnel p : ip) {
+            results.add(SearchResultDto.builder()
+                    .type("IP")
+                    .id(String.valueOf(p.getId()))
+                    .label(p.getNomComplet())
+                    .subtitle(p.getMatiereEnseignee() != null ? p.getMatiereEnseignee() : "")
+                    .build());
+        }
+
         return results;
+    }
+
+    private String cycleLabel(CycleType cycleType) {
+        if (cycleType == null) return "";
+        return switch (cycleType) {
+            case READAPTATION -> "Cycle de réadaptation";
+            case ADAPTATION -> "Cycle d'adaptation";
+            default -> cycleType.name();
+        };
     }
 }

@@ -36,6 +36,15 @@ public class DeController {
                 .body(data);
     }
 
+    @GetMapping("/export/pdf")
+    public ResponseEntity<byte[]> exportPdf(@PathVariable String schoolId) throws Exception {
+        byte[] data = exportService.exportPersonnelPdf(schoolId, PersonnelCategorie.DE);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=de.pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(data);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ApiResponse<PersonnelDto>> getById(@PathVariable String schoolId,
                                                               @PathVariable Long id) {

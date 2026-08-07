@@ -3,6 +3,7 @@ package com.emia.archives.dto.response;
 import com.emia.archives.dto.PersonnelDto;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter @Setter
@@ -19,8 +20,8 @@ public class MemberPromotionDetail {
     public static class PromotionDetail {
         private String rang;
         private String nom;
-        private Integer anneeEntree;
-        private Integer anneeSortie;
+        private LocalDate anneeEntree;
+        private LocalDate anneeSortie;
         private int stagiaireCount;
         private String majorName;
     }

@@ -3,6 +3,8 @@ package com.emia.archives.service;
 import com.emia.archives.dto.response.*;
 import com.emia.archives.entity.Promotion;
 import com.emia.archives.entity.Stagiaire;
+import com.emia.archives.enums.CycleType;
+import com.emia.archives.enums.StagiaireStatus;
 import com.emia.archives.mapper.EntityMapper;
 import com.emia.archives.repository.PromotionRepository;
 import com.emia.archives.repository.StagiaireRepository;
@@ -11,8 +13,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -184,7 +190,7 @@ public class StatisticsService {
 
     @Transactional(readOnly = true)
     public List<ChartDataPoint> getNationalityDistribution(String schoolId) {
-        List<Stagiaire> allStagiaires = stagiaireRepository.findBySchoolId(schoolId);
+        List<Stagiaire> allStagiaires = stagiaireRepository.findBySchoolIdAndPromotionIsNotNull(schoolId);
 
         java.util.Map<String, Integer> countryCounts = new java.util.LinkedHashMap<>();
         for (Stagiaire s : allStagiaires) {
@@ -212,6 +218,101 @@ public class StatisticsService {
                     .build());
         }
         return points;
+    }
+
+    @Transactional(readOnly = true)
+    public CycleStatsResponse getCycleStats(String schoolId) {
+        return CycleStatsResponse.builder()
+                .readaptation(buildCycleBlock(schoolId, CycleType.READAPTATION))
+                .adaptation(buildCycleBlock(schoolId, CycleType.ADAPTATION))
+                .build();
+    }
+
+    private CycleStatsResponse.CycleStatsBlock buildCycleBlock(String schoolId, CycleType type) {
+        List<Stagiaire> stagiaires = stagiaireRepository.findBySchoolIdAndCycleType(schoolId, type);
+
+        List<Stagiaire> sortedDesc = stagiaires.stream()
+                .filter(s -> s.getMoyenne() != null)
+                .sorted(Comparator.comparing(Stagiaire::getMoyenne).reversed())
+                .toList();
+
+        BigDecimal average = BigDecimal.ZERO;
+        BigDecimal best = BigDecimal.ZERO;
+        BigDecimal worst = BigDecimal.ZERO;
+        if (!sortedDesc.isEmpty()) {
+            average = sortedDesc.stream()
+                    .map(Stagiaire::getMoyenne)
+                    .reduce(BigDecimal.ZERO, BigDecimal::add)
+                    .divide(BigDecimal.valueOf(sortedDesc.size()), 2, RoundingMode.HALF_UP);
+            best = sortedDesc.get(0).getMoyenne();
+            worst = sortedDesc.get(sortedDesc.size() - 1).getMoyenne();
+        }
+
+        long count = stagiaires.size();
+        BigDecimal SIXTEEN = BigDecimal.valueOf(16);
+        BigDecimal FOURTEEN = BigDecimal.valueOf(14);
+        BigDecimal TWELVE = BigDecimal.valueOf(12);
+        BigDecimal TEN = BigDecimal.valueOf(10);
+
+        long excellent = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(SIXTEEN) >= 0).count();
+        long bien = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TWELVE) >= 0 && s.getMoyenne().compareTo(SIXTEEN) < 0).count();
+        long moyen = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TEN) >= 0 && s.getMoyenne().compareTo(TWELVE) < 0).count();
+        long faible = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TEN) < 0).count();
+
+        List<DonutSegment> gradeDistribution = List.of(
+                createSegment("Excellent (16-20)", excellent, count, "#2E7D32", 100, 0),
+                createSegment("Bien (12-16)", bien, count, "#1565C0", 100, excellent * 100 / (double) count),
+                createSegment("Moyen (10-12)", moyen, count, "#F9A825", 100, (excellent + bien) * 100 / (double) count),
+                createSegment("Faible (<10)", faible, count, "#C62828", 100, (excellent + bien + moyen) * 100 / (double) count)
+        );
+
+        List<PodiumEntry> topList = new ArrayList<>();
+        for (int i = 0; i < Math.min(sortedDesc.size(), 5); i++) {
+            topList.add(mapper.toPodiumEntry(i + 1, sortedDesc.get(i)));
+        }
+
+        List<Stagiaire> belowTwelve = stagiaires.stream()
+                .filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TWELVE) < 0)
+                .sorted(Comparator.comparing(Stagiaire::getMoyenne))
+                .toList();
+        List<PodiumEntry> lowList = new ArrayList<>();
+        for (int i = 0; i < Math.min(belowTwelve.size(), 10); i++) {
+            lowList.add(mapper.toPodiumEntry(i + 1, belowTwelve.get(i)));
+        }
+
+        long mentionTresBien = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(SIXTEEN) >= 0).count();
+        long mentionBien = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(FOURTEEN) >= 0 && s.getMoyenne().compareTo(SIXTEEN) < 0).count();
+        long mentionAssezBien = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TWELVE) >= 0 && s.getMoyenne().compareTo(FOURTEEN) < 0).count();
+        long mentionPassable = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TEN) >= 0 && s.getMoyenne().compareTo(TWELVE) < 0).count();
+        long mentionInsuffisant = stagiaires.stream().filter(s -> s.getMoyenne() != null && s.getMoyenne().compareTo(TEN) < 0).count();
+
+        List<ChartDataPoint> mentions = List.of(
+                ChartDataPoint.builder().label("Très Bien (≥16)").value(mentionTresBien).color("#2E7D32").build(),
+                ChartDataPoint.builder().label("Bien (14-16)").value(mentionBien).color("#1565C0").build(),
+                ChartDataPoint.builder().label("Assez Bien (12-14)").value(mentionAssezBien).color("#7B1FA2").build(),
+                ChartDataPoint.builder().label("Passable (10-12)").value(mentionPassable).color("#F9A825").build(),
+                ChartDataPoint.builder().label("Insuffisant (<10)").value(mentionInsuffisant).color("#C62828").build()
+        );
+
+        long deceased = stagiaires.stream().filter(s -> s.getEstDecede() != null && s.getEstDecede()).count();
+
+        Map<String, Long> statusCount = new LinkedHashMap<>();
+        for (StagiaireStatus status : StagiaireStatus.values()) {
+            statusCount.put(status.name(), stagiaires.stream().filter(s -> s.getStatus() == status).count());
+        }
+
+        return CycleStatsResponse.CycleStatsBlock.builder()
+                .total(count)
+                .average(average)
+                .best(best)
+                .worst(worst)
+                .gradeDistribution(gradeDistribution)
+                .topList(topList)
+                .lowList(lowList)
+                .mentions(mentions)
+                .deceased(deceased)
+                .statusCount(statusCount)
+                .build();
     }
 
     private Promotion findPromotionByRangFlexible(String schoolId, String rang) {

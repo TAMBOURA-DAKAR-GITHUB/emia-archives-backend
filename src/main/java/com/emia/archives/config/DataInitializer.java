@@ -27,6 +27,20 @@ public class DataInitializer implements CommandLineRunner {
         initSchool();
         initGrades();
         initAdminUser();
+        backfillNumeroEoa();
+    }
+
+    private void backfillNumeroEoa() {
+        List<Stagiaire> missing = stagiaireRepository.findAllByOrderByIdAsc().stream()
+                .filter(s -> s.getNumeroEoa() == null)
+                .toList();
+        if (missing.isEmpty()) return;
+        int next = stagiaireRepository.findMaxNumeroEoa() + 1;
+        for (Stagiaire s : missing) {
+            s.setNumeroEoa(next++);
+        }
+        stagiaireRepository.saveAll(missing);
+        log.info("NumeroEoa backfilled for {} stagiaires", missing.size());
     }
 
     private void initSchool() {

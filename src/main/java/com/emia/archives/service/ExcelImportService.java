@@ -13,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -28,7 +30,7 @@ public class ExcelImportService {
     public List<StagiaireDto> importStagiaires(String schoolId, MultipartFile file) throws IOException, BadRequestException {
         List<CreateStagiaireRequest> requests = parseExcelFile(file);
         if (requests.isEmpty()) {
-            throw new BadRequestException("Aucune ligne valide trouvée dans le fichier. Vérifiez le format (Prénoms & Noms, Promotion, Type de Cycle, Moyenne, Décédé, Infos Supp., Observations).");
+            throw new BadRequestException("Aucune ligne valide trouvée dans le fichier. Vérifiez le format (Prénoms & Noms, Promotion, Type de Cycle, Moyenne, Décédé, Infos Supp., Observations, Date de Naissance, Lieu de Naissance).");
         }
         List<StagiaireDto> result = new ArrayList<>();
         List<String> errors = new ArrayList<>();
@@ -74,16 +76,16 @@ public class ExcelImportService {
                     }
 
                     String rangString = rangNumber.intValue() == 1
-                            ? "1ière Promotion"
-                            : rangNumber.intValue() + "ième Promotion";
+                            ? "1ère Promotion"
+                            : rangNumber.intValue() + "ème Promotion";
 
                     String nom = getCellStringValue(row.getCell(1));
                     if (nom == null || nom.isBlank()) {
                         nom = rangString;
                     }
 
-                    Double anneeEntree = getCellNumericValue(row.getCell(2));
-                    Double anneeSortie = getCellNumericValue(row.getCell(3));
+                    LocalDate anneeEntree = getCellDateOrYearValue(row.getCell(2));
+                    LocalDate anneeSortie = getCellDateOrYearValue(row.getCell(3));
 
                     String cycleSpecialText = getCellStringValue(row.getCell(4));
                     boolean cycleSpecial = "OUI".equalsIgnoreCase(cycleSpecialText) ||
@@ -93,8 +95,8 @@ public class ExcelImportService {
                     PromotionDto dto = PromotionDto.builder()
                             .rang(rangString)
                             .nom(nom.trim())
-                            .anneeEntree(anneeEntree != null ? anneeEntree.intValue() : null)
-                            .anneeSortie(anneeSortie != null ? anneeSortie.intValue() : null)
+                            .anneeEntree(anneeEntree)
+                            .anneeSortie(anneeSortie)
                             .cycleSpecial(cycleSpecial)
                             .cycleSpecialInfo(cycleSpecialInfo != null ? cycleSpecialInfo.trim() : null)
                             .stagiaireCount(0)
@@ -141,6 +143,8 @@ public class ExcelImportService {
                     request.setEstDecede("OUI".equalsIgnoreCase(decedeText) || "TRUE".equalsIgnoreCase(decedeText) || "1".equals(decedeText));
                     request.setInformationsSupplementaires(getCellStringValue(row.getCell(5)));
                     request.setObservations(getCellStringValue(row.getCell(6)));
+                    request.setDateNaissance(getCellDateValue(row.getCell(7)));
+                    request.setLieuNaissance(getCellStringValue(row.getCell(8)));
                     request.setStatus(StagiaireStatus.EN_COURS.name());
 
                     if (request.getNomComplet() != null && !request.getNomComplet().isBlank()) {
@@ -162,7 +166,7 @@ public class ExcelImportService {
         Matcher matcher = Pattern.compile("(\\d+)").matcher(trimmed);
         if (matcher.find()) {
             int num = Integer.parseInt(matcher.group(1));
-            return num == 1 ? "1ière Promotion" : num + "ième Promotion";
+            return num == 1 ? "1ère Promotion" : num + "ème Promotion";
         }
         return trimmed;
     }
@@ -190,6 +194,45 @@ public class ExcelImportService {
             }
             default -> null;
         };
+    }
+
+    private LocalDate getCellDateValue(Cell cell) {
+        if (cell == null) return null;
+        if (cell.getCellType() == CellType.NUMERIC && DateUtil.isCellDateFormatted(cell)) {
+            return cell.getLocalDateTimeCellValue().toLocalDate();
+        }
+        String value = getCellStringValue(cell);
+        if (value == null || value.isBlank()) return null;
+        for (DateTimeFormatter formatter : List.of(
+                DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+                DateTimeFormatter.ofPattern("d/M/yyyy"),
+                DateTimeFormatter.ISO_LOCAL_DATE)) {
+            try {
+                return LocalDate.parse(value.trim(), formatter);
+            } catch (Exception ignored) {
+            }
+        }
+        return null;
+    }
+
+    private LocalDate getCellDateOrYearValue(Cell cell) {
+        if (cell == null) return null;
+        if (cell.getCellType() == CellType.NUMERIC) {
+            if (DateUtil.isCellDateFormatted(cell)) {
+                return cell.getLocalDateTimeCellValue().toLocalDate();
+            }
+            Double num = cell.getNumericCellValue();
+            if (num != null && num >= 1900 && num <= 2100 && num == Math.floor(num)) {
+                return LocalDate.of(num.intValue(), 1, 1);
+            }
+        }
+        LocalDate parsed = getCellDateValue(cell);
+        if (parsed != null) return parsed;
+        Double num = getCellNumericValue(cell);
+        if (num != null && num >= 1900 && num <= 2100) {
+            return LocalDate.of(num.intValue(), 1, 1);
+        }
+        return null;
     }
 
     private Integer getCellIntValue(Cell cell) {

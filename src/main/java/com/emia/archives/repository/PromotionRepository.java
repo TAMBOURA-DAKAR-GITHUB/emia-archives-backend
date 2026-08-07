@@ -4,6 +4,7 @@ import com.emia.archives.entity.Promotion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -20,8 +21,8 @@ public interface PromotionRepository extends JpaRepository<Promotion, Long> {
 
     @Query("SELECT p FROM Promotion p WHERE p.school.id = :schoolId AND p.anneeEntree <= :anneeFin AND p.anneeSortie >= :anneeDebut ORDER BY p.anneeEntree DESC")
     List<Promotion> findBySchoolIdAndAnneeOverlap(@Param("schoolId") String schoolId,
-                                                   @Param("anneeDebut") Integer anneeDebut,
-                                                   @Param("anneeFin") Integer anneeFin);
+                                                   @Param("anneeDebut") LocalDate anneeDebut,
+                                                   @Param("anneeFin") LocalDate anneeFin);
 
     @Query("SELECT p FROM Promotion p WHERE p.school.id = :schoolId AND (LOWER(p.nom) LIKE LOWER(CONCAT('%', :q, '%')) OR LOWER(p.rang) LIKE LOWER(CONCAT('%', :q, '%')))")
     List<Promotion> searchBySchoolId(@Param("schoolId") String schoolId, @Param("q") String q);

@@ -48,12 +48,12 @@ public class PersonnelService {
         Personnel personnel = personnelRepository.findByIdAndSchoolId(id, schoolId)
                 .orElseThrow(() -> new ResourceNotFoundException("Personnel", "id", id));
 
-        Integer debutYear = personnel.getDateDebutService() != null
-                ? personnel.getDateDebutService().getYear() : 1900;
-        Integer finYear = personnel.getDateFinService() != null
-                ? personnel.getDateFinService().getYear() : 2100;
+        LocalDate debut = personnel.getDateDebutService() != null
+                ? personnel.getDateDebutService() : LocalDate.of(1900, 1, 1);
+        LocalDate fin = personnel.getDateFinService() != null
+                ? personnel.getDateFinService() : LocalDate.of(2100, 12, 31);
 
-        List<Promotion> promotions = promotionRepository.findBySchoolIdAndAnneeOverlap(schoolId, debutYear, finYear);
+        List<Promotion> promotions = promotionRepository.findBySchoolIdAndAnneeOverlap(schoolId, debut, fin);
 
         List<MemberPromotionDetail.PromotionDetail> promoDetails = promotions.stream()
                 .map(p -> MemberPromotionDetail.PromotionDetail.builder()
@@ -103,6 +103,7 @@ public class PersonnelService {
         personnel.setNomComplet(request.getNomComplet());
         personnel.setDateDebutService(request.getDateDebutService());
         personnel.setDateFinService(request.getDateFinService());
+        personnel.setMatiereEnseignee(request.getMatiereEnseignee());
 
         if (request.getGrade() != null) {
             try {

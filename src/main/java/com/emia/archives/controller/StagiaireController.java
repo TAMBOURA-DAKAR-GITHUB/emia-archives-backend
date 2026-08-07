@@ -44,6 +44,12 @@ public class StagiaireController {
         return ResponseEntity.ok(ApiResponse.ok(stagiaireService.getStagiairesByPromotion(schoolId, rang)));
     }
 
+    @GetMapping("/schools/{schoolId}/stagiaires/cycles")
+    public ResponseEntity<ApiResponse<List<StagiaireDto>>> getStagiairesWithoutPromotion(
+            @PathVariable String schoolId) {
+        return ResponseEntity.ok(ApiResponse.ok(stagiaireService.getStagiairesWithoutPromotion(schoolId)));
+    }
+
     @PostMapping("/stagiaires")
     public ResponseEntity<ApiResponse<StagiaireDto>> createStagiaire(
             @Valid @RequestBody CreateStagiaireRequest request) {
