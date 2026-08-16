@@ -24,11 +24,11 @@ public class DiplomaController {
     @GetMapping("/schools/{schoolId}/diplomas/{stagiaireId}")
     public ResponseEntity<byte[]> generateDiploma(@PathVariable String schoolId, @PathVariable Long stagiaireId)
             throws Exception {
-        byte[] png = diplomaService.generateDiploma(schoolId, stagiaireId);
+        byte[] pdf = diplomaService.generateDiploma(schoolId, stagiaireId);
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=diplome-" + stagiaireId + ".png")
-                .contentType(MediaType.IMAGE_PNG)
-                .body(png);
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=diplome-" + stagiaireId + ".pdf")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
     }
 
     @PostMapping("/schools/{schoolId}/diplomas/batch")

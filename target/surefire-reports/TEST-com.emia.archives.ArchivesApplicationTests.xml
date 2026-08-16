@@ -1,0 +1,3140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.emia.archives.ArchivesApplicationTests" time="7.874" tests="1" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="17"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="D:\projet\EMIA\Archives\emia-archives-backend\target\test-classes;D:\projet\EMIA\Archives\emia-archives-backend\target\classes;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.5\spring-boot-starter-web-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.5\spring-boot-starter-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot\3.2.5\spring-boot-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.5\spring-boot-autoconfigure-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.5\spring-boot-starter-logging-3.2.5.jar;C:\Users\NAGATO\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\NAGATO\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\NAGATO\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\NAGATO\.m2\repository\org\slf4j\jul-to-slf4j\2.0.13\jul-to-slf4j-2.0.13.jar;C:\Users\NAGATO\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\NAGATO\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.5\spring-boot-starter-json-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.5\spring-boot-starter-tomcat-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.20\tomcat-embed-core-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.20\tomcat-embed-websocket-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-web\6.1.6\spring-web-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-beans\6.1.6\spring-beans-6.1.6.jar;C:\Users\NAGATO\.m2\repository\io\micrometer\micrometer-observation\1.12.5\micrometer-observation-1.12.5.jar;C:\Users\NAGATO\.m2\repository\io\micrometer\micrometer-commons\1.12.5\micrometer-commons-1.12.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-webmvc\6.1.6\spring-webmvc-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-aop\6.1.6\spring-aop-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-context\6.1.6\spring-context-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-expression\6.1.6\spring-expression-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.5\spring-boot-starter-data-jpa-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.5\spring-boot-starter-aop-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\aspectj\aspectjweaver\1.9.22\aspectjweaver-1.9.22.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.5\spring-boot-starter-jdbc-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-jdbc\6.1.6\spring-jdbc-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\NAGATO\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\NAGATO\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\NAGATO\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\NAGATO\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\NAGATO\.m2\repository\net\bytebuddy\byte-buddy\1.14.13\byte-buddy-1.14.13.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\NAGATO\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\NAGATO\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\NAGATO\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\NAGATO\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\NAGATO\.m2\repository\org\springframework\data\spring-data-jpa\3.2.5\spring-data-jpa-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\data\spring-data-commons\3.2.5\spring-data-commons-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-orm\6.1.6\spring-orm-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-tx\6.1.6\spring-tx-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-aspects\6.1.6\spring-aspects-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.2.5\spring-boot-starter-validation-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.20\tomcat-embed-el-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\NAGATO\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\NAGATO\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\NAGATO\.m2\repository\commons-codec\commons-codec\1.16.1\commons-codec-1.16.1.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\NAGATO\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\NAGATO\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\NAGATO\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\NAGATO\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\pdfbox\2.0.31\pdfbox-2.0.31.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\fontbox\2.0.31\fontbox-2.0.31.jar;C:\Users\NAGATO\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\NAGATO\.m2\repository\com\openhtmltopdf\openhtmltopdf-pdfbox\1.0.10\openhtmltopdf-pdfbox-1.0.10.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\xmpbox\2.0.24\xmpbox-2.0.24.jar;C:\Users\NAGATO\.m2\repository\com\openhtmltopdf\openhtmltopdf-core\1.0.10\openhtmltopdf-core-1.0.10.jar;C:\Users\NAGATO\.m2\repository\de\rototor\pdfbox\graphics2d\0.32\graphics2d-0.32.jar;C:\Users\NAGATO\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.5\spring-boot-starter-test-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-test\3.2.5\spring-boot-test-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.5\spring-boot-test-autoconfigure-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\NAGATO\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\NAGATO\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\NAGATO\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\NAGATO\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\NAGATO\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\NAGATO\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\NAGATO\.m2\repository\org\awaitility\awaitility\4.2.1\awaitility-4.2.1.jar;C:\Users\NAGATO\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\NAGATO\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\NAGATO\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\NAGATO\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\NAGATO\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar;C:\Users\NAGATO\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\NAGATO\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\NAGATO\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\NAGATO\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-core\6.1.6\spring-core-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-jcl\6.1.6\spring-jcl-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-test\6.1.6\spring-test-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Atlantic/Reykjavik"/>
+    <property name="org.jboss.logging.provider" value="slf4j"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="17"/>
+    <property name="user.country" value="FR"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-17\bin"/>
+    <property name="sun.java.command" value="C:\Users\NAGATO\AppData\Local\Temp\surefire18162401618508297497\surefirebooter-20260810130843069_3.jar C:\Users\NAGATO\AppData\Local\Temp\surefire18162401618508297497 2026-08-10T13-08-42_913-jvmRun1 surefire-20260810130843069_1tmp surefire_0-20260810130843069_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\projet\EMIA\Archives\emia-archives-backend\target\test-classes;D:\projet\EMIA\Archives\emia-archives-backend\target\classes;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-web\3.2.5\spring-boot-starter-web-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter\3.2.5\spring-boot-starter-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot\3.2.5\spring-boot-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\3.2.5\spring-boot-autoconfigure-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-logging\3.2.5\spring-boot-starter-logging-3.2.5.jar;C:\Users\NAGATO\.m2\repository\ch\qos\logback\logback-classic\1.4.14\logback-classic-1.4.14.jar;C:\Users\NAGATO\.m2\repository\ch\qos\logback\logback-core\1.4.14\logback-core-1.4.14.jar;C:\Users\NAGATO\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.21.1\log4j-to-slf4j-2.21.1.jar;C:\Users\NAGATO\.m2\repository\org\slf4j\jul-to-slf4j\2.0.13\jul-to-slf4j-2.0.13.jar;C:\Users\NAGATO\.m2\repository\jakarta\annotation\jakarta.annotation-api\2.1.1\jakarta.annotation-api-2.1.1.jar;C:\Users\NAGATO\.m2\repository\org\yaml\snakeyaml\2.2\snakeyaml-2.2.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-json\3.2.5\spring-boot-starter-json-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.15.4\jackson-databind-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.15.4\jackson-annotations-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.15.4\jackson-core-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jdk8\2.15.4\jackson-datatype-jdk8-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\datatype\jackson-datatype-jsr310\2.15.4\jackson-datatype-jsr310-2.15.4.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\jackson\module\jackson-module-parameter-names\2.15.4\jackson-module-parameter-names-2.15.4.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\3.2.5\spring-boot-starter-tomcat-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\10.1.20\tomcat-embed-core-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\10.1.20\tomcat-embed-websocket-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-web\6.1.6\spring-web-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-beans\6.1.6\spring-beans-6.1.6.jar;C:\Users\NAGATO\.m2\repository\io\micrometer\micrometer-observation\1.12.5\micrometer-observation-1.12.5.jar;C:\Users\NAGATO\.m2\repository\io\micrometer\micrometer-commons\1.12.5\micrometer-commons-1.12.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-webmvc\6.1.6\spring-webmvc-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-aop\6.1.6\spring-aop-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-context\6.1.6\spring-context-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-expression\6.1.6\spring-expression-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\3.2.5\spring-boot-starter-data-jpa-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-aop\3.2.5\spring-boot-starter-aop-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\aspectj\aspectjweaver\1.9.22\aspectjweaver-1.9.22.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\3.2.5\spring-boot-starter-jdbc-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\zaxxer\HikariCP\5.0.1\HikariCP-5.0.1.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-jdbc\6.1.6\spring-jdbc-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\orm\hibernate-core\6.4.4.Final\hibernate-core-6.4.4.Final.jar;C:\Users\NAGATO\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\NAGATO\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\NAGATO\.m2\repository\org\jboss\logging\jboss-logging\3.5.3.Final\jboss-logging-3.5.3.Final.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\NAGATO\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\NAGATO\.m2\repository\com\fasterxml\classmate\1.6.0\classmate-1.6.0.jar;C:\Users\NAGATO\.m2\repository\net\bytebuddy\byte-buddy\1.14.13\byte-buddy-1.14.13.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.5\jaxb-runtime-4.0.5.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.5\jaxb-core-4.0.5.jar;C:\Users\NAGATO\.m2\repository\org\eclipse\angus\angus-activation\2.0.2\angus-activation-2.0.2.jar;C:\Users\NAGATO\.m2\repository\org\glassfish\jaxb\txw2\4.0.5\txw2-4.0.5.jar;C:\Users\NAGATO\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\NAGATO\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\NAGATO\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar;C:\Users\NAGATO\.m2\repository\org\springframework\data\spring-data-jpa\3.2.5\spring-data-jpa-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\data\spring-data-commons\3.2.5\spring-data-commons-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-orm\6.1.6\spring-orm-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-tx\6.1.6\spring-tx-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\slf4j\slf4j-api\2.0.13\slf4j-api-2.0.13.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-aspects\6.1.6\spring-aspects-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-validation\3.2.5\spring-boot-starter-validation-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\10.1.20\tomcat-embed-el-10.1.20.jar;C:\Users\NAGATO\.m2\repository\org\hibernate\validator\hibernate-validator\8.0.1.Final\hibernate-validator-8.0.1.Final.jar;C:\Users\NAGATO\.m2\repository\jakarta\validation\jakarta.validation-api\3.0.2\jakarta.validation-api-3.0.2.jar;C:\Users\NAGATO\.m2\repository\com\mysql\mysql-connector-j\8.3.0\mysql-connector-j-8.3.0.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi-ooxml\5.2.5\poi-ooxml-5.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi\5.2.5\poi-5.2.5.jar;C:\Users\NAGATO\.m2\repository\commons-codec\commons-codec\1.16.1\commons-codec-1.16.1.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-math3\3.6.1\commons-math3-3.6.1.jar;C:\Users\NAGATO\.m2\repository\com\zaxxer\SparseBitSet\1.3\SparseBitSet-1.3.jar;C:\Users\NAGATO\.m2\repository\org\apache\poi\poi-ooxml-lite\5.2.5\poi-ooxml-lite-5.2.5.jar;C:\Users\NAGATO\.m2\repository\org\apache\xmlbeans\xmlbeans\5.2.0\xmlbeans-5.2.0.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-compress\1.25.0\commons-compress-1.25.0.jar;C:\Users\NAGATO\.m2\repository\commons-io\commons-io\2.15.0\commons-io-2.15.0.jar;C:\Users\NAGATO\.m2\repository\com\github\virtuald\curvesapi\1.08\curvesapi-1.08.jar;C:\Users\NAGATO\.m2\repository\org\apache\logging\log4j\log4j-api\2.21.1\log4j-api-2.21.1.jar;C:\Users\NAGATO\.m2\repository\org\apache\commons\commons-collections4\4.4\commons-collections4-4.4.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\pdfbox\2.0.31\pdfbox-2.0.31.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\fontbox\2.0.31\fontbox-2.0.31.jar;C:\Users\NAGATO\.m2\repository\commons-logging\commons-logging\1.2\commons-logging-1.2.jar;C:\Users\NAGATO\.m2\repository\com\openhtmltopdf\openhtmltopdf-pdfbox\1.0.10\openhtmltopdf-pdfbox-1.0.10.jar;C:\Users\NAGATO\.m2\repository\org\apache\pdfbox\xmpbox\2.0.24\xmpbox-2.0.24.jar;C:\Users\NAGATO\.m2\repository\com\openhtmltopdf\openhtmltopdf-core\1.0.10\openhtmltopdf-core-1.0.10.jar;C:\Users\NAGATO\.m2\repository\de\rototor\pdfbox\graphics2d\0.32\graphics2d-0.32.jar;C:\Users\NAGATO\.m2\repository\org\projectlombok\lombok\1.18.32\lombok-1.18.32.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-starter-test\3.2.5\spring-boot-starter-test-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-test\3.2.5\spring-boot-test-3.2.5.jar;C:\Users\NAGATO\.m2\repository\org\springframework\boot\spring-boot-test-autoconfigure\3.2.5\spring-boot-test-autoconfigure-3.2.5.jar;C:\Users\NAGATO\.m2\repository\com\jayway\jsonpath\json-path\2.9.0\json-path-2.9.0.jar;C:\Users\NAGATO\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.2\jakarta.xml.bind-api-4.0.2.jar;C:\Users\NAGATO\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.3\jakarta.activation-api-2.1.3.jar;C:\Users\NAGATO\.m2\repository\net\minidev\json-smart\2.5.1\json-smart-2.5.1.jar;C:\Users\NAGATO\.m2\repository\net\minidev\accessors-smart\2.5.1\accessors-smart-2.5.1.jar;C:\Users\NAGATO\.m2\repository\org\ow2\asm\asm\9.6\asm-9.6.jar;C:\Users\NAGATO\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\NAGATO\.m2\repository\org\awaitility\awaitility\4.2.1\awaitility-4.2.1.jar;C:\Users\NAGATO\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\NAGATO\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\NAGATO\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\NAGATO\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\NAGATO\.m2\repository\org\mockito\mockito-core\5.7.0\mockito-core-5.7.0.jar;C:\Users\NAGATO\.m2\repository\net\bytebuddy\byte-buddy-agent\1.14.13\byte-buddy-agent-1.14.13.jar;C:\Users\NAGATO\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\NAGATO\.m2\repository\org\mockito\mockito-junit-jupiter\5.7.0\mockito-junit-jupiter-5.7.0.jar;C:\Users\NAGATO\.m2\repository\org\skyscreamer\jsonassert\1.5.1\jsonassert-1.5.1.jar;C:\Users\NAGATO\.m2\repository\com\vaadin\external\google\android-json\0.0.20131108.vaadin1\android-json-0.0.20131108.vaadin1.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-core\6.1.6\spring-core-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-jcl\6.1.6\spring-jcl-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\springframework\spring-test\6.1.6\spring-test-6.1.6.jar;C:\Users\NAGATO\.m2\repository\org\xmlunit\xmlunit-core\2.9.1\xmlunit-core-2.9.1.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\NAGATO"/>
+    <property name="user.language" value="fr"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-07-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-17"/>
+    <property name="file.separator" value="\"/>
+    <property name="style.color" value="always"/>
+    <property name="basedir" value="D:\projet\EMIA\Archives\emia-archives-backend"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="FILE_LOG_CHARSET" value="windows-1252"/>
+    <property name="java.awt.headless" value="true"/>
+    <property name="surefire.real.class.path" value="C:\Users\NAGATO\AppData\Local\Temp\surefire18162401618508297497\surefirebooter-20260810130843069_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="17.0.12+8-LTS-286"/>
+    <property name="user.name" value="NAGATO"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="maven.ext.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2026.1.1\plugins\maven\lib\intellij.maven.rt\maven-event-listener.jar"/>
+    <property name="localRepository" value="C:\Users\NAGATO\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\NAGATO\AppData\Local\Temp\"/>
+    <property name="idea.version" value="2026.1.1"/>
+    <property name="com.zaxxer.hikari.pool_number" value="1"/>
+    <property name="java.version" value="17.0.12"/>
+    <property name="user.dir" value="D:\projet\EMIA\Archives\emia-archives-backend"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="jansi.passthrough" value="true"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="PID" value="27924"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="CONSOLE_LOG_CHARSET" value="windows-1252"/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-17\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\PuTTY\;C:\Program Files\Tesseract-OCR;C:\Users\NAGATO\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\NAGATO\AppData\Local\Programs\Python\Python312\;C:\Users\NAGATO\AppData\Local\Programs\Python\Launcher\;C:\Users\NAGATO\AppData\Local\Microsoft\WindowsApps;C:\Users\NAGATO\AppData\Roaming\npm;C:\Users\NAGATO\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2026.1.1\bin;C:\Program Files\maven\apache-maven-3.9.15\bin;;C:\Users\NAGATO\AppData\Local\Programs\ngrok;C:\Users\NAGATO\.local\bin;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="17.0.12+8-LTS-286"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="maven.repo.local" value="C:\Users\NAGATO\.m2\repository"/>
+    <property name="java.class.version" value="61.0"/>
+  </properties>
+  <testcase name="contextLoads" classname="com.emia.archives.ArchivesApplicationTests" time="0.59">
+    <system-out><![CDATA[Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+13:08:44.307 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.emia.archives.ArchivesApplicationTests]: ArchivesApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:08:44.455 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.emia.archives.ArchivesApplication for test class com.emia.archives.ArchivesApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+2026-08-10T13:08:44.907Z  INFO 27924 --- [           main] c.e.archives.ArchivesApplicationTests    : Starting ArchivesApplicationTests using Java 17.0.12 with PID 27924 (started by NAGATO in D:\projet\EMIA\Archives\emia-archives-backend)
+2026-08-10T13:08:44.909Z DEBUG 27924 --- [           main] c.e.archives.ArchivesApplicationTests    : Running with Spring Boot v3.2.5, Spring v6.1.6
+2026-08-10T13:08:44.910Z  INFO 27924 --- [           main] c.e.archives.ArchivesApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2026-08-10T13:08:45.744Z  INFO 27924 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-10T13:08:45.841Z  INFO 27924 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 7 JPA repository interfaces.
+2026-08-10T13:08:46.404Z  INFO 27924 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-08-10T13:08:46.497Z  INFO 27924 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2026-08-10T13:08:46.557Z  INFO 27924 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-08-10T13:08:46.947Z  INFO 27924 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-10T13:08:46.988Z  INFO 27924 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-10T13:08:47.153Z  INFO 27924 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3b8507df
+2026-08-10T13:08:47.156Z  INFO 27924 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-10T13:08:47.203Z  WARN 27924 --- [           main] org.hibernate.dialect.Dialect            : HHH000511: The 5.5.0 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly. The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-08-10T13:08:47.208Z  WARN 27924 --- [           main] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-10T13:08:48.248Z  INFO 27924 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-10T13:08:48.392Z  INFO 27924 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-10T13:08:48.742Z  INFO 27924 --- [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-10T13:08:49.986Z  INFO 27924 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2026-08-10T13:08:50.405Z  INFO 27924 --- [           main] c.e.archives.ArchivesApplicationTests    : Started ArchivesApplicationTests in 5.755 seconds (process running for 7.159)
+2026-08-10T13:08:50.527Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        schools s1_0 
+    where
+        s1_0.id=?
+Hibernate: 
+    select
+        count(*) 
+    from
+        schools s1_0 
+    where
+        s1_0.id=?
+2026-08-10T13:08:50.539Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        grades g1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        grades g1_0
+2026-08-10T13:08:50.599Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.avatar_url,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.avatar_url,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-08-10T13:08:50.623Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.avatar_url,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.avatar_url,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.enabled,
+        u1_0.first_name,
+        u1_0.last_name,
+        u1_0.password,
+        u1_0.role,
+        u1_0.updated_at,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-08-10T13:08:50.636Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    order by
+        s1_0.id
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    order by
+        s1_0.id
+2026-08-10T13:08:50.816Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        distinct s1_0.promotion_id 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id is not null
+Hibernate: 
+    select
+        distinct s1_0.promotion_id 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id is not null
+2026-08-10T13:08:50.826Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.833Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.838Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.842Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.847Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.852Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.856Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.861Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.867Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.872Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.877Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.881Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.887Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.892Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.899Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.904Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.910Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.921Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.927Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.938Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.953Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.966Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.977Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.986Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:50.995Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.003Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.009Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.019Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.026Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.032Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.041Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.065Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.077Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.086Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.099Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.110Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.124Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.136Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.148Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.157Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.186Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.213Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.245Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.265Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+2026-08-10T13:08:51.298Z DEBUG 27924 --- [           main] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+Hibernate: 
+    select
+        s1_0.id,
+        s1_0.created_at,
+        s1_0.cycle_type,
+        s1_0.date_naissance,
+        s1_0.est_decede,
+        s1_0.grade,
+        s1_0.informations_supplementaires,
+        s1_0.lieu_naissance,
+        s1_0.matricule,
+        s1_0.moyenne,
+        s1_0.nom_complet,
+        s1_0.numero_eoa,
+        s1_0.observations,
+        s1_0.photo_url,
+        s1_0.promotion_id,
+        s1_0.rang,
+        s1_0.school_id,
+        s1_0.status,
+        s1_0.updated_at 
+    from
+        stagiaires s1_0 
+    where
+        s1_0.promotion_id=? 
+    order by
+        case 
+            when s1_0.moyenne is null 
+                then 1 
+            else 0 
+        end,
+        s1_0.moyenne desc
+]]></system-out>
+  </testcase>
+</testsuite>

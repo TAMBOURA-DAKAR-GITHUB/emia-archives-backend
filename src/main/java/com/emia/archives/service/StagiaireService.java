@@ -223,20 +223,22 @@ public class StagiaireService {
         List<Stagiaire> stagiaires = stagiaireRepository.findAllByPromotionIdOrderByMoyenneDesc(promotionId);
 
         int currentRank = 0;
-        BigDecimal prevMoyenne = null;
 
-        for (int i = 0; i < stagiaires.size(); i++) {
-            Stagiaire s = stagiaires.get(i);
+        for (Stagiaire s : stagiaires) {
             if (s.getMoyenne() == null) {
                 s.setRang(null);
-            } else if (prevMoyenne != null && s.getMoyenne().compareTo(prevMoyenne) == 0) {
-                s.setRang(currentRank);
             } else {
-                currentRank = i + 1;
+                currentRank++;
                 s.setRang(currentRank);
             }
-            prevMoyenne = s.getMoyenne();
         }
         stagiaireRepository.saveAll(stagiaires);
+    }
+
+    @Transactional
+    public void recalculateAllRangs() {
+        for (Long promotionId : stagiaireRepository.findDistinctPromotionIds()) {
+            recalculateRangs(promotionId);
+        }
     }
 }

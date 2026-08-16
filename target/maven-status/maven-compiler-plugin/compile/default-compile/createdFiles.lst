@@ -9,6 +9,7 @@ com\emia\archives\entity\Personnel.class
 com\emia\archives\dto\UserDto$UserDtoBuilder.class
 com\emia\archives\service\StatisticsService.class
 com\emia\archives\service\FileStorageService.class
+com\emia\archives\service\BulletinService.class
 com\emia\archives\controller\AuthController.class
 com\emia\archives\exception\BadRequestException.class
 com\emia\archives\dto\response\CycleStatsResponse.class
@@ -30,6 +31,8 @@ com\emia\archives\entity\User$UserBuilder.class
 com\emia\archives\dto\StagiaireDto.class
 com\emia\archives\util\CountryResolver.class
 com\emia\archives\repository\UserRepository.class
+com\emia\archives\entity\Bulletin.class
+com\emia\archives\entity\Bulletin$BulletinBuilder.class
 com\emia\archives\dto\PersonnelDto.class
 com\emia\archives\service\DiplomaService$TemplateLayout.class
 com\emia\archives\dto\GradeDto.class
@@ -47,6 +50,8 @@ com\emia\archives\repository\GradeRepository.class
 com\emia\archives\entity\School.class
 com\emia\archives\dto\response\DashboardStats$DashboardStatsBuilder.class
 com\emia\archives\dto\GradeDto$GradeDtoBuilder.class
+com\emia\archives\service\BulletinService$1.class
+com\emia\archives\controller\BulletinController.class
 com\emia\archives\service\GlobalSearchService$1.class
 com\emia\archives\dto\response\ChartDataPoint.class
 com\emia\archives\dto\response\DashboardStats.class
@@ -81,6 +86,7 @@ com\emia\archives\controller\SchoolController.class
 com\emia\archives\dto\PersonnelDto$PersonnelDtoBuilder.class
 com\emia\archives\repository\StagiaireRepository.class
 com\emia\archives\service\DiplomaService$Align.class
+com\emia\archives\dto\BulletinData.class
 com\emia\archives\dto\response\KpiData.class
 com\emia\archives\dto\response\CycleStatsResponse$CycleStatsResponseBuilder.class
 com\emia\archives\entity\Stagiaire.class
@@ -93,6 +99,7 @@ com\emia\archives\service\AuthService.class
 com\emia\archives\entity\Stagiaire$StagiaireBuilder.class
 com\emia\archives\repository\PersonnelRepository.class
 com\emia\archives\dto\response\LoginResponse.class
+com\emia\archives\repository\BulletinRepository.class
 com\emia\archives\service\ExcelImportService$1.class
 com\emia\archives\controller\StagiaireController.class
 com\emia\archives\entity\Grade$GradeBuilder.class

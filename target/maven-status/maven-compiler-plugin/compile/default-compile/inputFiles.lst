@@ -17,6 +17,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\re
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\DeController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\IpController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\request\LoginRequest.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\entity\Bulletin.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\GlobalSearchService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\PromotionRepository.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\GradeController.java
@@ -35,6 +36,8 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\StagiaireService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\PromotionController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\AuthService.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\repository\BulletinRepository.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\controller\BulletinController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\DiplomaService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\config\SpaController.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\StagiaireDto.java
@@ -56,6 +59,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\co
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\request\CreateStagiaireRequest.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\LoginResponse.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\PromotionDto.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\BulletinService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\GradeDto.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\FileStorageService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\enums\Role.java
@@ -63,6 +67,7 @@ D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dt
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\GradeService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\config\WebConfig.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\mapper\EntityMapper.java
+D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\BulletinData.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\service\PromotionService.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\KpiData.java
 D:\projet\EMIA\Archives\emia-archives-backend\src\main\java\com\emia\archives\dto\response\DonutSegment.java

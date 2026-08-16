@@ -58,7 +58,13 @@ public class DiplomaService {
     @Transactional(readOnly = true)
     public byte[] generateDiploma(String schoolId, Long stagiaireId) throws Exception {
         BufferedImage image = generateDiplomaImage(schoolId, stagiaireId);
-        return toPng(image);
+        try (PDDocument document = new PDDocument();
+             ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            PdfBuilder.addPage(document, image);
+            image.flush();
+            document.save(out);
+            return out.toByteArray();
+        }
     }
 
     @Transactional(readOnly = true)
@@ -185,11 +191,15 @@ public class DiplomaService {
         birth = birth.scaled(sx, sy);
         birth = new TextSlot(birth.align, birth.left - 70, birth.top + 0, birth.right, birth.bottom + 15,
                 birth.eraseLeft - 70, birth.eraseTop + 0, birth.eraseRight, birth.eraseBottom + 15,
-                birth.bold, birth.maxFontSize - 14);
+                birth.bold, birth.maxFontSize - 4);
         if ("special".equals(key)) {
             birth = new TextSlot(birth.align, birth.left + 10, birth.top, birth.right, birth.bottom,
                     birth.eraseLeft + 10, birth.eraseTop, birth.eraseRight, birth.eraseBottom,
-                    birth.bold, birth.maxFontSize - 15);
+                    birth.bold, birth.maxFontSize + 5);
+        } else {
+            birth = new TextSlot(birth.align, birth.left, birth.top - 5, birth.right, birth.bottom - 5,
+                    birth.eraseLeft, birth.eraseTop - 5, birth.eraseRight, birth.eraseBottom - 5,
+                    birth.bold, birth.maxFontSize);
         }
         if (period != null) {
             period = period.scaled(sx, sy);
@@ -340,12 +350,6 @@ public class DiplomaService {
         g.dispose();
         image.flush();
         return scaled;
-    }
-
-    private static byte[] toPng(BufferedImage image) throws Exception {
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        ImageIO.write(image, "png", out);
-        return out.toByteArray();
     }
 
 

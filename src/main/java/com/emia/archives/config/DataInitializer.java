@@ -3,6 +3,7 @@ package com.emia.archives.config;
 import com.emia.archives.entity.*;
 import com.emia.archives.enums.*;
 import com.emia.archives.repository.*;
+import com.emia.archives.service.StagiaireService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +22,7 @@ public class DataInitializer implements CommandLineRunner {
     private final GradeRepository gradeRepository;
     private final PromotionRepository promotionRepository;
     private final StagiaireRepository stagiaireRepository;
+    private final StagiaireService stagiaireService;
 
     @Override
     public void run(String... args) {
@@ -28,6 +30,7 @@ public class DataInitializer implements CommandLineRunner {
         initGrades();
         initAdminUser();
         backfillNumeroEoa();
+        stagiaireService.recalculateAllRangs();
     }
 
     private void backfillNumeroEoa() {

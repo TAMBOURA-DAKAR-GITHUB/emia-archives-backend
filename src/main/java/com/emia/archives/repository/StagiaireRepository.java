@@ -30,6 +30,9 @@ public interface StagiaireRepository extends JpaRepository<Stagiaire, Long> {
 
     List<Stagiaire> findAllByOrderByIdAsc();
 
+    @Query("SELECT DISTINCT s.promotion.id FROM Stagiaire s WHERE s.promotion IS NOT NULL")
+    List<Long> findDistinctPromotionIds();
+
     @Query("SELECT COUNT(s) FROM Stagiaire s WHERE s.school.id = :schoolId AND s.promotion IS NOT NULL")
     long countBySchoolId(@Param("schoolId") String schoolId);
 
