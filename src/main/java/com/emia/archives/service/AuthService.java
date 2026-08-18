@@ -19,7 +19,7 @@ public class AuthService {
 
     public LoginResponse login(LoginRequest request) {
         User user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(() -> new ResourceNotFoundException("Utilisateur", "username", request.getUsername()));
+                .orElseThrow(() -> new IllegalArgumentException("Identifiants incorrects"));
 
         if (!user.getPassword().equals(request.getPassword())) {
             throw new IllegalArgumentException("Identifiants incorrects");

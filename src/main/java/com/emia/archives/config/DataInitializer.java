@@ -29,6 +29,7 @@ public class DataInitializer implements CommandLineRunner {
         initSchool();
         initGrades();
         initAdminUser();
+        initViewerUser();
         backfillNumeroEoa();
         stagiaireService.recalculateAllRangs();
     }
@@ -90,17 +91,70 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void initAdminUser() {
-        User admin = userRepository.findByUsername("admin").orElse(null);
+        User admin = userRepository.findByUsername("emia")
+                .filter(u -> u.getRole() == Role.ADMIN)
+                .orElse(null);
         if (admin == null) {
-            admin = User.builder()
-                    .username("admin")
-                    .firstName("Administrateur")
-                    .lastName("Système")
-                    .email("admin@eemk.mil.ml")
-                    .role(Role.ADMIN)
-                    .enabled(true)
-                    .build();
+            // L'admin existe sous un autre nom ("dem" ou "admin") → migré vers "emia"
+            admin = userRepository.findByUsername("dem")
+                    .filter(u -> u.getRole() == Role.ADMIN)
+                    .orElse(userRepository.findByUsername("admin").orElse(null));
+            if (admin != null) {
+                // Si "emia" est pris par un autre compte (viewer), on le déplace temporairement
+                userRepository.findByUsername("emia").ifPresent(other -> {
+                    other.setUsername("emia-tmp");
+                    userRepository.save(other);
+                });
+                admin.setUsername("emia");
+            } else {
+                admin = User.builder()
+                        .username("emia")
+                        .firstName("Administrateur")
+                        .lastName("Système")
+                        .email("emia@.mil.ml")
+                        .role(Role.ADMIN)
+                        .enabled(true)
+                        .build();
+            }
         }
-        admin.setPassword("1234");
-        userRepository.save(admin);}
+        admin.setPassword("Emia@2026");
+        userRepository.save(admin);
+        log.info("Admin user ready: emia");
+    }
+
+    private void initViewerUser() {
+        User viewer = userRepository.findByUsername("dem")
+                .filter(u -> u.getRole() == Role.VIEWER)
+                .orElse(null);
+        if (viewer == null) {
+            // Le viewer existe sous un autre nom ("emia", "consultation", "emia-tmp") → migré vers "dem"
+            viewer = userRepository.findByUsername("emia")
+                    .filter(u -> u.getRole() == Role.VIEWER)
+                    .orElse(userRepository.findByUsername("consultation")
+                            .filter(u -> u.getRole() == Role.VIEWER)
+                            .orElse(userRepository.findByUsername("emia-tmp")
+                                    .filter(u -> u.getRole() == Role.VIEWER)
+                                    .orElse(null)));
+            if (viewer != null) {
+                // Si "dem" est déjà pris, on le déplace temporairement
+                userRepository.findByUsername("dem").ifPresent(other -> {
+                    other.setUsername("dem-tmp");
+                    userRepository.save(other);
+                });
+                viewer.setUsername("dem");
+            } else {
+                viewer = User.builder()
+                        .username("dem")
+                        .firstName("DEM")
+                        .lastName("Consultation")
+                        .email("dem.consultation@eemk.mil.ml")
+                        .role(Role.VIEWER)
+                        .enabled(true)
+                        .build();
+            }
+        }
+        viewer.setPassword("Dem@2026");
+        userRepository.save(viewer);
+        log.info("Viewer user ready: dem");
+    }
 }
