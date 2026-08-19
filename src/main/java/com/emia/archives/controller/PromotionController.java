@@ -4,6 +4,7 @@ import com.emia.archives.dto.PromotionDto;
 import com.emia.archives.dto.response.ApiResponse;
 import com.emia.archives.dto.response.DashboardStats;
 import com.emia.archives.entity.Promotion;
+import com.emia.archives.entity.Stagiaire;
 import com.emia.archives.exception.ResourceNotFoundException;
 import com.emia.archives.mapper.EntityMapper;
 import com.emia.archives.repository.StagiaireRepository;
@@ -51,7 +52,19 @@ public class PromotionController {
         try {
             Promotion promotion = promotionService.getPromotionEntityBySchoolAndRangNumber(schoolId, rang);
             int total = (int) stagiaireRepository.countByPromotionId(promotion.getId());
-            DashboardStats stats = mapper.toDashboardStats(promotion, total, null);
+
+            List<Stagiaire> top = stagiaireRepository.findTop5ByPromotionId(promotion.getId());
+            String majorName = !top.isEmpty() ? top.get(0).getNomComplet() : promotion.getMajorName();
+            Double bestAverage = !top.isEmpty() && top.get(0).getMoyenne() != null
+                    ? top.get(0).getMoyenne().doubleValue()
+                    : (promotion.getMajorScore() != null ? promotion.getMajorScore() : 0.0);
+
+            DashboardStats stats = DashboardStats.builder()
+                    .totalStagiaires(total)
+                    .majorName(majorName)
+                    .bestAverage(bestAverage)
+                    .promotionRang(promotion.getRang())
+                    .build();
             return ResponseEntity.ok(ApiResponse.ok(stats));
         } catch (ResourceNotFoundException e) {
             throw e;
