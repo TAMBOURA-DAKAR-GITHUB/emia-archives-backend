@@ -9,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Component
@@ -20,7 +19,6 @@ public class DataInitializer implements CommandLineRunner {
     private final UserRepository userRepository;
     private final SchoolRepository schoolRepository;
     private final GradeRepository gradeRepository;
-    private final PromotionRepository promotionRepository;
     private final StagiaireRepository stagiaireRepository;
     private final StagiaireService stagiaireService;
 
@@ -111,7 +109,7 @@ public class DataInitializer implements CommandLineRunner {
                         .username("emia")
                         .firstName("Administrateur")
                         .lastName("Système")
-                        .email("emia@.mil.ml")
+                        .email("ecolemilitaireinterarme@emia.mil.ml")
                         .role(Role.ADMIN)
                         .enabled(true)
                         .build();
@@ -147,7 +145,7 @@ public class DataInitializer implements CommandLineRunner {
                         .username("dem")
                         .firstName("DEM")
                         .lastName("Consultation")
-                        .email("dem.consultation@eemk.mil.ml")
+                        .email("ecolemilitaireinterarme@emia.mil.ml")
                         .role(Role.VIEWER)
                         .enabled(true)
                         .build();

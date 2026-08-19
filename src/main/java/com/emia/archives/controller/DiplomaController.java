@@ -31,6 +31,16 @@ public class DiplomaController {
                 .body(pdf);
     }
 
+    @GetMapping(value = "/schools/{schoolId}/diplomas/{stagiaireId}/preview", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> generateDiplomaPreview(@PathVariable String schoolId, @PathVariable Long stagiaireId)
+            throws Exception {
+        byte[] jpeg = diplomaService.generateDiplomaPreview(schoolId, stagiaireId);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=apercu-" + stagiaireId + ".jpg")
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(jpeg);
+    }
+
     @PostMapping("/schools/{schoolId}/diplomas/batch")
     public ResponseEntity<byte[]> generateBatch(@PathVariable String schoolId,
                                                 @RequestBody List<Long> stagiaireIds) throws Exception {

@@ -68,6 +68,39 @@ public class DiplomaService {
     }
 
     @Transactional(readOnly = true)
+    public byte[] generateDiplomaPreview(String schoolId, Long stagiaireId) throws Exception {
+        BufferedImage image = generateDiplomaImage(schoolId, stagiaireId);
+        BufferedImage preview = downscaleForPreview(image);
+        try (ByteArrayOutputStream out = new ByteArrayOutputStream()) {
+            ImageIO.write(preview, "jpeg", out);
+            image.flush();
+            if (preview != image) preview.flush();
+            return out.toByteArray();
+        }
+    }
+
+    private static final int PREVIEW_MAX_DIMENSION = 1400;
+
+    private static BufferedImage downscaleForPreview(BufferedImage image) {
+        if (image.getWidth() <= PREVIEW_MAX_DIMENSION && image.getHeight() <= PREVIEW_MAX_DIMENSION) {
+            return image;
+        }
+        double scale = Math.min(PREVIEW_MAX_DIMENSION / (double) image.getWidth(),
+                PREVIEW_MAX_DIMENSION / (double) image.getHeight());
+        int w = Math.max(1, (int) Math.round(image.getWidth() * scale));
+        int h = Math.max(1, (int) Math.round(image.getHeight() * scale));
+        BufferedImage scaled = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
+        Graphics2D g = scaled.createGraphics();
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, w, h);
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g.drawImage(image, 0, 0, w, h, null);
+        g.dispose();
+        return scaled;
+    }
+
+    @Transactional(readOnly = true)
     public byte[] generateDiplomasPdf(String schoolId, List<Long> stagiaireIds) throws Exception {
         if (stagiaireIds == null || stagiaireIds.isEmpty()) {
             throw new IllegalArgumentException("Aucun stagiaire sélectionné");
