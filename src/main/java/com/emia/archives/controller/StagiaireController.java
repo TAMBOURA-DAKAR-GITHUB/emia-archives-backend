@@ -3,6 +3,9 @@ package com.emia.archives.controller;
 import com.emia.archives.dto.StagiaireDto;
 import com.emia.archives.dto.request.CreateStagiaireRequest;
 import com.emia.archives.dto.response.ApiResponse;
+import com.emia.archives.entity.Stagiaire;
+import com.emia.archives.mapper.EntityMapper;
+import com.emia.archives.repository.StagiaireRepository;
 import com.emia.archives.service.ExcelImportService;
 import com.emia.archives.service.ExportService;
 import com.emia.archives.service.FileStorageService;
@@ -13,6 +16,7 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -27,6 +31,8 @@ public class StagiaireController {
     private final ExcelImportService excelImportService;
     private final FileStorageService fileStorageService;
     private final ExportService exportService;
+    private final StagiaireRepository stagiaireRepository;
+    private final EntityMapper mapper;
 
     @GetMapping("/stagiaires")
     public ResponseEntity<ApiResponse<List<StagiaireDto>>> getAllStagiaires() {
@@ -48,6 +54,14 @@ public class StagiaireController {
     public ResponseEntity<ApiResponse<List<StagiaireDto>>> getStagiairesWithoutPromotion(
             @PathVariable String schoolId) {
         return ResponseEntity.ok(ApiResponse.ok(stagiaireService.getStagiairesWithoutPromotion(schoolId)));
+    }
+
+    @GetMapping("/schools/{schoolId}/stagiaires/search")
+    @Transactional(readOnly = true)
+    public ResponseEntity<ApiResponse<List<StagiaireDto>>> searchStagiaires(
+            @PathVariable String schoolId, @RequestParam String q) {
+        List<Stagiaire> results = stagiaireRepository.searchBySchoolId(schoolId, q);
+        return ResponseEntity.ok(ApiResponse.ok(results.stream().map(mapper::toDto).toList()));
     }
 
     @PostMapping("/stagiaires")

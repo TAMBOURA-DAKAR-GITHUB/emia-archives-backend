@@ -178,7 +178,7 @@ public class DiplomaService {
     private static String ordinal(String number) {
         int n = Integer.parseInt(number);
         if (n % 10 == 1 && n % 100 != 11) return n + "ère";
-        return n + "ième";
+        return n + "ème";
     }
 
     private TemplateLayout layoutFor(CycleType cycleType) {

@@ -77,7 +77,7 @@ public class ExcelImportService {
 
                     String rangString = rangNumber.intValue() == 1
                             ? "1ère Promotion"
-                            : rangNumber.intValue() + "ième Promotion";
+                            : rangNumber.intValue() + "ème Promotion";
 
                     String nom = getCellStringValue(row.getCell(1));
                     if (nom == null || nom.isBlank()) {
