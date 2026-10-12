@@ -115,7 +115,7 @@ public class DataInitializer implements CommandLineRunner {
                         .build();
             }
         }
-        admin.setPassword("Emia@2026");
+        admin.setPassword("Emia@12345");
         userRepository.save(admin);
         log.info("Admin user ready: emia");
     }
@@ -151,7 +151,7 @@ public class DataInitializer implements CommandLineRunner {
                         .build();
             }
         }
-        viewer.setPassword("Dem@2026");
+        viewer.setPassword("Dem@12345");
         userRepository.save(viewer);
         log.info("Viewer user ready: dem");
     }
